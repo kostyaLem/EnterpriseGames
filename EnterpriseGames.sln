@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseGames.UI", "EnterpriseGames.UI\EnterpriseGames.UI.csproj", "{A6955D9A-6596-497F-9453-590D7A001D9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseGames.Core", "EnterpriseGames.Core\EnterpriseGames.Core.csproj", "{D823F15E-BE0C-4C0B-BA5E-3275692B4FBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6955D9A-6596-497F-9453-590D7A001D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6955D9A-6596-497F-9453-590D7A001D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6955D9A-6596-497F-9453-590D7A001D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6955D9A-6596-497F-9453-590D7A001D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D823F15E-BE0C-4C0B-BA5E-3275692B4FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D823F15E-BE0C-4C0B-BA5E-3275692B4FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D823F15E-BE0C-4C0B-BA5E-3275692B4FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D823F15E-BE0C-4C0B-BA5E-3275692B4FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E18175C7-959C-4206-BF9A-372BC98FEE7E}
+	EndGlobalSection
+EndGlobal
