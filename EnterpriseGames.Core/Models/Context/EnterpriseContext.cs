@@ -1,51 +1,24 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using EnterpriseGames.Core.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace EnterpriseGames.Core.Models.Context
 {
     public partial class EnterpriseContext : DbContext
     {
-        public EnterpriseContext()
-        {
-        }
-
         public EnterpriseContext(DbContextOptions<EnterpriseContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductGenre> ProductGenre { get; set; }
         public virtual DbSet<ProductPriceHistory> ProductPriceHistory { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlite("DataSource=desktop_games.db");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Admin>(entity =>
-            {
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.Login).IsRequired();
-
-                entity.Property(e => e.PasswordHash).IsRequired();
-            });
-
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.Property(e => e.Id)
@@ -53,6 +26,25 @@ namespace EnterpriseGames.Core.Models.Context
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.Phone).IsRequired();
+            });
+
+            modelBuilder.Entity<Employee>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Birthday).IsRequired();
+
+                entity.Property(e => e.Login).IsRequired();
+
+                entity.Property(e => e.Name).IsRequired();
+
+                entity.Property(e => e.PasswordHash).IsRequired();
+
+                entity.Property(e => e.Phone).IsRequired();
+
+                entity.Property(e => e.Surname).IsRequired();
             });
 
             modelBuilder.Entity<Genre>(entity =>
@@ -72,11 +64,32 @@ namespace EnterpriseGames.Core.Models.Context
 
                 entity.Property(e => e.CustomerId).HasColumnName("Customer_ID");
 
+                entity.Property(e => e.EmployeeId).HasColumnName("Employee_ID");
+
                 entity.Property(e => e.Instituted).IsRequired();
 
                 entity.Property(e => e.ProductId).HasColumnName("Product_ID");
 
                 entity.Property(e => e.ProductPriceId).HasColumnName("ProductPrice_ID");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Order)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Order)
+                    .HasForeignKey(d => d.EmployeeId);
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Order)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
+
+                entity.HasOne(d => d.ProductPrice)
+                    .WithMany(p => p.Order)
+                    .HasForeignKey(d => d.ProductPriceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<Product>(entity =>
