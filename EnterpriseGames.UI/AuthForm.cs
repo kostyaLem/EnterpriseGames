@@ -1,5 +1,7 @@
 ﻿using EnterpriseGames.Core.Other;
 using EnterpriseGames.Core.Services;
+using EnterpriseGames.UI.Forms;
+using EnterpriseGames.UI.Forms.EditForms;
 using EnterpriseGames.UI.Utility;
 using MetroFramework;
 using MetroFramework.Forms;

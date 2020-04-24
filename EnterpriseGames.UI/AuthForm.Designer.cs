@@ -150,6 +150,7 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.btnLogin);
+            this.MaximizeBox = false;
             this.Name = "AuthForm";
             this.Resizable = false;
             this.Text = "Enterprise | Авторизация";

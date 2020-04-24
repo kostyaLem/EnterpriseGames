@@ -1,4 +1,5 @@
-﻿using EnterpriseGames.Core.Models.Context;
+﻿using EnterpriseGames.UI.Forms;
+using EnterpriseGames.UI.Forms.EditForms;
 using System;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace EnterpriseGames.UI
         {           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AuthForm());
+            Application.Run(new EmployeesForm());
         }
     }
 }

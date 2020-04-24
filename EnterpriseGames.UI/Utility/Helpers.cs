@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EnterpriseGames.Core.Models;
+using EnterpriseGames.Core.Other;
+using System;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,6 +20,17 @@ namespace EnterpriseGames.UI.Utility
 
             var provider = MD5.Create();
             return provider.ComputeHash(Encoding.Default.GetBytes(value.Trim()));
+        }
+
+        internal static string UserTypeToString(this Employee emp)
+        {
+            switch ((UserType)emp.UserType)
+            {
+                case UserType.Admin: return "Администратор";
+                case UserType.Employee: return "Работник";
+                case UserType.None: return "Временный";
+                default: return "Не установлен";
+            }
         }
     }
 }
