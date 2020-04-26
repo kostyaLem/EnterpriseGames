@@ -13,6 +13,7 @@ namespace EnterpriseGames.Core.Models.Context
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderItem> OrderItem { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductGenre> ProductGenre { get; set; }
         public virtual DbSet<ProductPriceHistory> ProductPriceHistory { get; set; }
@@ -64,13 +65,9 @@ namespace EnterpriseGames.Core.Models.Context
 
                 entity.Property(e => e.CustomerId).HasColumnName("Customer_ID");
 
+                entity.Property(e => e.DateCreated).IsRequired();
+
                 entity.Property(e => e.EmployeeId).HasColumnName("Employee_ID");
-
-                entity.Property(e => e.Instituted).IsRequired();
-
-                entity.Property(e => e.ProductId).HasColumnName("Product_ID");
-
-                entity.Property(e => e.ProductPriceId).HasColumnName("ProductPrice_ID");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Order)
@@ -79,17 +76,25 @@ namespace EnterpriseGames.Core.Models.Context
 
                 entity.HasOne(d => d.Employee)
                     .WithMany(p => p.Order)
-                    .HasForeignKey(d => d.EmployeeId);
+                    .HasForeignKey(d => d.EmployeeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
+            });
+
+            modelBuilder.Entity<OrderItem>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.OrderId).HasColumnName("Order_ID");
+
+                entity.Property(e => e.ProductId).HasColumnName("Product_ID");
+
+                entity.HasOne(d => d.Order)
+                    .WithMany()
+                    .HasForeignKey(d => d.OrderId);
 
                 entity.HasOne(d => d.Product)
-                    .WithMany(p => p.Order)
-                    .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
-
-                entity.HasOne(d => d.ProductPrice)
-                    .WithMany(p => p.Order)
-                    .HasForeignKey(d => d.ProductPriceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .WithMany()
+                    .HasForeignKey(d => d.ProductId);
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -98,7 +103,7 @@ namespace EnterpriseGames.Core.Models.Context
                     .HasColumnName("ID")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Instituted).IsRequired();
+                entity.Property(e => e.DateCreated).IsRequired();
 
                 entity.Property(e => e.Title).IsRequired();
             });
@@ -128,7 +133,7 @@ namespace EnterpriseGames.Core.Models.Context
                     .HasColumnName("ID")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Instituted).IsRequired();
+                entity.Property(e => e.DateCreated).IsRequired();
 
                 entity.Property(e => e.ProductId).HasColumnName("Product_ID");
 
