@@ -187,6 +187,7 @@
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseSelectable = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // metroLabel1
             // 
@@ -206,9 +207,8 @@
             this.lblCount.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.lblCount.Location = new System.Drawing.Point(126, 424);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(27, 25);
+            this.lblCount.Size = new System.Drawing.Size(0, 0);
             this.lblCount.TabIndex = 5;
-            this.lblCount.Text = "12";
             // 
             // flowLayoutPanel1
             // 

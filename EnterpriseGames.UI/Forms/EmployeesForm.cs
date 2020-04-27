@@ -19,13 +19,14 @@ namespace EnterpriseGames.UI.Forms
             InitializeComponent();
         }
 
-        private void EmployeesForm_Load(object sender, System.EventArgs e)
+        private void EmployeesForm_Load(object sender, EventArgs e)
         {
             UpdateDataGrid();
         }
 
         private void UpdateDataGrid()
         {
+            dataGrid.Rows.Clear();
             _empService.GetAll().ToList().ForEach(emp => dataGrid.Rows.Add(
                     emp.Id,
                     string.Join(" ", emp.Surname, emp.Name, emp.Patronymic),
@@ -44,7 +45,7 @@ namespace EnterpriseGames.UI.Forms
         private void dataGrid_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGrid.SelectedRows.Count != 0)
-            {
+            {                
                 btnRemove.Enabled = btnEdit.Enabled = true;
             }
             else
@@ -60,6 +61,7 @@ namespace EnterpriseGames.UI.Forms
             if (_empService.Remove(id))
             {
                 dataGrid.Rows.Remove(dataGrid.SelectedRows[0]);
+                MetroMessageBox.Show(this, $"Пользователь удалён", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateCounter();
             }
             else
@@ -79,8 +81,25 @@ namespace EnterpriseGames.UI.Forms
                 if (dialogResult == DialogResult.OK)
                 {
                     _empService.Update(emp);
-                    MetroMessageBox.Show(this, $"Пользователь {emp.Login} успешно изменен", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MetroMessageBox.Show(this, $"Пользователь {emp.Login} изменен", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    UpdateDataGrid();
+                    UpdateCounter();
                 }
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var emp = new Employee();
+
+            var dialogResult = new EditEmployeeForm(emp).ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                _empService.Add(emp);
+                MetroMessageBox.Show(this, $"Пользователь {emp.Login} успешно создан", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateDataGrid();
+                UpdateCounter();
             }
         }
     }

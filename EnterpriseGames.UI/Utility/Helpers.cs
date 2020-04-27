@@ -9,8 +9,11 @@ namespace EnterpriseGames.UI.Utility
 {
     internal static class Helpers
     {
-        internal static bool IsAnyEmpty<T>(Predicate<T> predicate, params T[] values)
+        internal static bool IsAnyEmpty<T>(Predicate<T> predicate, params T[] values) where T : class
         {
+            if (values is string[])
+                return values.Cast<string>().Any(value => predicate(value.Trim() as T));
+
             return values.Any(value => predicate(value));
         }
 

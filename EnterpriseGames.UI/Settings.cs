@@ -13,7 +13,7 @@ namespace EnterpriseGames.UI
         {
             Context = new EnterpriseContext(new DbContextOptionsBuilder<EnterpriseContext>()
                 .UseSqlite("Filename=desktop_games.db")
-                .UseLazyLoadingProxies().Options);
+                .UseLazyLoadingProxies().EnableSensitiveDataLogging().Options);
         }
     }
 }

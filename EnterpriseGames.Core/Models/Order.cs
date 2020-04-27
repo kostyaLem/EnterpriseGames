@@ -5,6 +5,11 @@ namespace EnterpriseGames.Core.Models
 {
     public partial class Order
     {
+        public Order()
+        {
+            OrderItem = new HashSet<OrderItem>();
+        }
+
         public long Id { get; set; }
         public long CustomerId { get; set; }
         public long EmployeeId { get; set; }
@@ -12,5 +17,6 @@ namespace EnterpriseGames.Core.Models
 
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual ICollection<OrderItem> OrderItem { get; set; }
     }
 }
