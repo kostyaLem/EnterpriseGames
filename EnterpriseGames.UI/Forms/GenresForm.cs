@@ -21,7 +21,7 @@ namespace EnterpriseGames.UI.Forms
 
         private void GenresForm_Load(object sender, System.EventArgs e)
         {
-            var items = _genresService.GetAll(); ;
+            var items = _genresService.GetAll();
 
             lstGenres.Items.AddRange(items.Select(MapToItem).ToArray());
             _items = new List<Genre>(items);
@@ -62,6 +62,7 @@ namespace EnterpriseGames.UI.Forms
 
             var genre = new Genre() { Name = txtName.Text.Trim() };
             _genresService.Add(genre);
+            _items.Add(genre);
             lstGenres.Items.Add(new ListViewItem(txtName.Text.Trim()) { Tag = genre.Id });
 
             txtName.Text = string.Empty;

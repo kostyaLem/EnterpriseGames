@@ -53,6 +53,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
 
         private void btnRemoveImage_Click(object sender, EventArgs e)
         {
+            picImage.Image.Dispose();
             picImage.Image = null;
         }
 
@@ -68,7 +69,11 @@ namespace EnterpriseGames.UI.Forms.EditForms
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (Helpers.IsAnyEmpty(string.IsNullOrEmpty, txtLogin.Text, txtPassword.Text, txtSurname.Text, txtName.Text, txtPhone.Text) || (!rbAdmin.Checked && !rbUser.Checked))
+            {
                 MetroMessageBox.Show(this, "Заполните обязательные поля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.None;
+                return;
+            }
 
             _employee.Login = txtLogin.Text.Trim();
             _employee.PasswordHash = Helpers.CreateHash(txtPassword.Text.Trim());
