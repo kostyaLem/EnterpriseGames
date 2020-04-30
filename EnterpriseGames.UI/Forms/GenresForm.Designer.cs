@@ -50,8 +50,8 @@
             this.lstGenres.Location = new System.Drawing.Point(23, 152);
             this.lstGenres.MultiSelect = false;
             this.lstGenres.Name = "lstGenres";
-            this.lstGenres.OwnerDraw = true;
-            this.lstGenres.Size = new System.Drawing.Size(717, 229);
+            this.lstGenres.ShowGroups = false;
+            this.lstGenres.Size = new System.Drawing.Size(733, 229);
             this.lstGenres.TabIndex = 2;
             this.lstGenres.UseCompatibleStateImageBehavior = false;
             this.lstGenres.UseSelectable = true;
@@ -60,12 +60,15 @@
             // 
             // txtFilter
             // 
+            this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             // 
             // 
             // 
             this.txtFilter.CustomButton.Image = null;
-            this.txtFilter.CustomButton.Location = new System.Drawing.Point(350, 2);
+            this.txtFilter.CustomButton.Location = new System.Drawing.Point(705, 2);
             this.txtFilter.CustomButton.Name = "";
             this.txtFilter.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.txtFilter.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -85,7 +88,7 @@
             this.txtFilter.SelectionLength = 0;
             this.txtFilter.SelectionStart = 0;
             this.txtFilter.ShortcutsEnabled = false;
-            this.txtFilter.Size = new System.Drawing.Size(378, 30);
+            this.txtFilter.Size = new System.Drawing.Size(733, 30);
             this.txtFilter.TabIndex = 3;
             this.txtFilter.UseSelectable = true;
             this.txtFilter.WaterMark = "Фильтр поиска";
@@ -95,12 +98,15 @@
             // 
             // txtName
             // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             // 
             // 
             // 
             this.txtName.CustomButton.Image = null;
-            this.txtName.CustomButton.Location = new System.Drawing.Point(350, 2);
+            this.txtName.CustomButton.Location = new System.Drawing.Point(705, 2);
             this.txtName.CustomButton.Name = "";
             this.txtName.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.txtName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -120,7 +126,7 @@
             this.txtName.SelectionLength = 0;
             this.txtName.SelectionStart = 0;
             this.txtName.ShortcutsEnabled = false;
-            this.txtName.Size = new System.Drawing.Size(378, 30);
+            this.txtName.Size = new System.Drawing.Size(733, 30);
             this.txtName.TabIndex = 6;
             this.txtName.UseSelectable = true;
             this.txtName.WaterMark = "Название";
@@ -136,7 +142,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnRemove);
             this.flowLayoutPanel1.Controls.Add(this.btnEdit);
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(216, 407);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(232, 398);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(524, 43);
             this.flowLayoutPanel1.TabIndex = 9;

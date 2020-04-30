@@ -15,6 +15,8 @@ namespace EnterpriseGames.UI.Forms
     public partial class ProductsForm : MetroForm
     {
         private readonly ProductsService _prService = new ProductsService(Settings.Context);
+        private readonly GenresService _gService = new GenresService(Settings.Context);
+
         private List<Product> _items;
 
         public ProductsForm()
@@ -31,6 +33,7 @@ namespace EnterpriseGames.UI.Forms
         private void UpdateDataGrid()
         {
             dataGrid.Rows.Clear();
+            dtgPrices.Rows.Clear();
 
             var products = _prService.GetAll();
             products.ToList().ForEach(pr =>
@@ -60,15 +63,18 @@ namespace EnterpriseGames.UI.Forms
 
                 var selectedProduct = _prService.Find((Convert.ToInt32(dataGrid.SelectedRows[0].Cells[0].FormattedValue)));
 
-                using (var ms = new MemoryStream(selectedProduct.Image))
-                    picGame.Image = Image.FromStream(ms);
+                txtDesc.Text = selectedProduct.Description;
+
+                if (selectedProduct.Image != null)
+                    using (var ms = new MemoryStream(selectedProduct.Image))
+                        picGame.Image = Image.FromStream(ms);
 
                 selectedProduct.ProductPriceHistory.ToList().ForEach(x => dtgPrices.Rows.Add(x.Id, x.Price, x.DateCreated));
             }
             else
             {
                 btnRemove.Enabled = btnEdit.Enabled = false;
-
+                txtDesc.Text = string.Empty;
                 picGame.Image?.Dispose();
                 picGame.Image = null;
                 dtgPrices.Rows.Clear();
@@ -97,7 +103,7 @@ namespace EnterpriseGames.UI.Forms
 
             if (product != null)
             {
-                var dialogResult = new EditProductForm(product).ShowDialog();
+                var dialogResult = new EditProductForm(product, _gService.GetAll()).ShowDialog();
 
                 if (dialogResult == DialogResult.OK)
                 {
@@ -113,7 +119,7 @@ namespace EnterpriseGames.UI.Forms
         {
             var product = new Product();
 
-            var dialogResult = new EditProductForm(product).ShowDialog();
+            var dialogResult = new EditProductForm(product, _gService.GetAll()).ShowDialog();
 
             if (dialogResult == DialogResult.OK)
             {
@@ -128,6 +134,7 @@ namespace EnterpriseGames.UI.Forms
         {
             if (!string.IsNullOrEmpty(txtFilter.Text))
             {
+                dataGrid.Rows.Clear();
                 _items.Where(x => x.Title.Contains(txtFilter.Text.Trim())).ToList()?.ForEach(pr =>
                               dataGrid.Rows.Add(
                                       pr.Id,

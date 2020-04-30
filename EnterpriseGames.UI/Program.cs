@@ -1,5 +1,4 @@
 ﻿using EnterpriseGames.UI.Forms;
-using EnterpriseGames.UI.Forms.EditForms;
 using System;
 using System.Windows.Forms;
 

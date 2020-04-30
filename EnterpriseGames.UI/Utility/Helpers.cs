@@ -1,6 +1,7 @@
 ﻿using EnterpriseGames.Core.Models;
 using EnterpriseGames.Core.Other;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -33,6 +34,19 @@ namespace EnterpriseGames.UI.Utility
                 case UserType.Employee: return "Работник";
                 case UserType.None: return "Временный";
                 default: return "Не установлен";
+            }
+        }
+
+        internal class GenreComparer : IEqualityComparer<Genre>
+        {
+            public bool Equals(Genre x, Genre y)
+            {
+                return x.Id == y.Id ? true : false;
+            }
+
+            public int GetHashCode(Genre obj)
+            {
+                return obj.GetHashCode();
             }
         }
     }

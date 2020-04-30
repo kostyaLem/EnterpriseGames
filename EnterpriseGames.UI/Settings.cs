@@ -1,6 +1,8 @@
-﻿using EnterpriseGames.Core.Models.Context;
+﻿using EnterpriseGames.Core.Models;
+using EnterpriseGames.Core.Models.Context;
 using EnterpriseGames.Core.Other;
 using Microsoft.EntityFrameworkCore;
+using System.Windows.Forms;
 
 namespace EnterpriseGames.UI
 {
@@ -14,6 +16,11 @@ namespace EnterpriseGames.UI
             Context = new EnterpriseContext(new DbContextOptionsBuilder<EnterpriseContext>()
                 .UseSqlite("Filename=desktop_games.db")
                 .UseLazyLoadingProxies().EnableSensitiveDataLogging().Options);
+        }
+
+        internal static ListViewItem MapToItem(this Genre genre)
+        {
+            return new ListViewItem(genre.Name) { Tag = genre };
         }
     }
 }

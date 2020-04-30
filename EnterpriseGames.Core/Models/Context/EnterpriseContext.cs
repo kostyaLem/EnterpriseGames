@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using EnterpriseGames.Core.Models;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace EnterpriseGames.Core.Models.Context
 {
@@ -76,12 +76,12 @@ namespace EnterpriseGames.Core.Models.Context
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Order)
                     .HasForeignKey(d => d.CustomerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Employee)
                     .WithMany(p => p.Order)
                     .HasForeignKey(d => d.EmployeeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<OrderItem>(entity =>
@@ -95,12 +95,12 @@ namespace EnterpriseGames.Core.Models.Context
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderItem)
                     .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderItem)
                     .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -125,12 +125,12 @@ namespace EnterpriseGames.Core.Models.Context
                 entity.HasOne(d => d.Genre)
                     .WithMany(p => p.ProductGenre)
                     .HasForeignKey(d => d.GenreId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.ProductGenre)
                     .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<ProductPriceHistory>(entity =>
@@ -146,7 +146,7 @@ namespace EnterpriseGames.Core.Models.Context
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.ProductPriceHistory)
                     .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             OnModelCreatingPartial(modelBuilder);

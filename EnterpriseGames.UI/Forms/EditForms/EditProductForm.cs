@@ -3,28 +3,37 @@ using EnterpriseGames.UI.Utility;
 using MetroFramework;
 using MetroFramework.Forms;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
+using static EnterpriseGames.UI.Utility.Helpers;
 
 namespace EnterpriseGames.UI.Forms.EditForms
 {
     public partial class EditProductForm : MetroForm
     {
+        private readonly ICollection<Genre> _genres;
         private readonly Product _product;
 
-        public EditProductForm(Product product)
+        public EditProductForm(Product product, ICollection<Genre> genres)
         {
             InitializeComponent();
 
             _product = product;
+            _genres = genres;
         }
 
         private void EditProductForm_Load(object sender, EventArgs e)
         {
             txtTitle.Text = _product.Title;
             txtDesc.Text = _product.Description;
+
+            lstExistedGenres.Items.AddRange(_genres.Select(x => x.MapToItem()).ToArray());
+            lstGameGenres.Items.AddRange(_product.ProductGenre.Select(x => x.Genre.MapToItem()).ToArray());
 
             _product.ProductPriceHistory.ToList().ForEach(x => dtgPrices.Rows.Add(x.Id, x.Price, x.DateCreated, Convert.ToBoolean(x.IsDeleted)));
 
@@ -65,6 +74,22 @@ namespace EnterpriseGames.UI.Forms.EditForms
                 return;
             }
 
+            var deletedGenres = _product.ProductGenre.Select(x => x.Genre)
+                                                .Except((lstGameGenres.Items as ICollection<ListViewItem>).Select(x => x.Tag as Genre),
+                                                new GenreComparer()).ToList();
+
+            foreach (var item in deletedGenres)
+            {
+                var prGenre = _product.ProductGenre.FirstOrDefault(x => x.GenreId == item.Id);
+                if (prGenre != null) _product.ProductGenre.Remove(prGenre);
+            }
+
+            var newGenres = (lstExistedGenres.Items as ICollection<ListViewItem>).Where(x => (x.Tag as Genre).ProductGenre is null).Select(x => x.Tag as Genre);
+            foreach (var item in newGenres)
+            {
+                _product.ProductGenre.Add(new ProductGenre() { Product = _product, Genre = item });
+            }
+
             foreach (DataGridViewRow row in dtgPrices.Rows)
             {
                 var id = row.Cells[0].FormattedValue.ToString();
@@ -87,13 +112,10 @@ namespace EnterpriseGames.UI.Forms.EditForms
                 }
             }
 
-
-            _product.ProductPriceHistory.Add(new ProductPriceHistory() { Product = _product, Price = 1243, DateCreated = DateTime.Now.ToShortDateString() });
-
             _product.Title = txtTitle.Text.Trim();
             _product.Description = txtDesc.Text.Trim();
-            _product.DateCreated = dtpCreated.Value.ToString();
-            _product.ProductDateCreated = dtpProductCreated.Value.ToString();
+            _product.DateCreated = dtpCreated.Value.ToShortDateString();
+            _product.ProductDateCreated = dtpProductCreated.Value.ToShortDateString();
         }
 
         private void btnRemoveImage_Click(object sender, EventArgs e)
@@ -112,6 +134,40 @@ namespace EnterpriseGames.UI.Forms.EditForms
             {
                 picGame.Image = Image.FromFile(openFD.FileName);
                 _product.Image = File.ReadAllBytes(openFD.FileName);
+            }
+        }
+
+        private void btnRemoveGanre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddNewGenre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstExistedGenres_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstExistedGenres.SelectedItems.Count != 0)
+            {
+                btnAddNewGenre.Enabled = true;
+            }
+            else
+            {
+                btnAddNewGenre.Enabled = false;
+            }
+        }
+
+        private void lstGameGenres_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstGameGenres.SelectedItems.Count != 0)
+            {
+                btnRemoveGanre.Enabled = true;
+            }
+            else
+            {
+                btnRemoveGanre.Enabled = false;
             }
         }
     }

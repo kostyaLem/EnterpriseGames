@@ -23,7 +23,7 @@ namespace EnterpriseGames.UI.Forms
         {
             var items = _genresService.GetAll();
 
-            lstGenres.Items.AddRange(items.Select(MapToItem).ToArray());
+            lstGenres.Items.AddRange(items.Select(x => x.MapToItem()).ToArray());
             _items = new List<Genre>(items);
 
             UpdateCounter();
@@ -33,7 +33,7 @@ namespace EnterpriseGames.UI.Forms
         {
             if (lstGenres.SelectedItems.Count != 0)
             {
-                if (_genresService.Remove((long)lstGenres.SelectedItems[0].Tag))
+                if (_genresService.Remove((lstGenres.SelectedItems[0].Tag as Genre).Id))
                 {
                     lstGenres.Items.Remove(lstGenres.SelectedItems[0]);
                     MetroMessageBox.Show(this, $"Жанр удалён", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -44,12 +44,18 @@ namespace EnterpriseGames.UI.Forms
 
         private void btnEdit_Click(object sender, System.EventArgs e)
         {
-            var genre = _genresService.Find((long)lstGenres.SelectedItems[0].Tag);
-            genre.Name = txtName.Text.Trim();
+            if (Helpers.IsAnyEmpty(string.IsNullOrEmpty, txtName.Text))
+            {
+                MetroMessageBox.Show(this, "Заполните название жанра для изменения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            _genresService.Update(genre);
-            MetroMessageBox.Show(this, $"Изменено", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            lstGenres.SelectedItems[0].Text = genre.Name;
+                var genre = _genresService.Find((lstGenres.SelectedItems[0].Tag as Genre).Id);
+                genre.Name = txtName.Text.Trim();
+
+                _genresService.Update(genre);
+                MetroMessageBox.Show(this, $"Изменено", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lstGenres.SelectedItems[0].Text = genre.Name;
         }
 
         private void btnAdd_Click(object sender, System.EventArgs e)
@@ -63,7 +69,7 @@ namespace EnterpriseGames.UI.Forms
             var genre = new Genre() { Name = txtName.Text.Trim() };
             _genresService.Add(genre);
             _items.Add(genre);
-            lstGenres.Items.Add(new ListViewItem(txtName.Text.Trim()) { Tag = genre.Id });
+            lstGenres.Items.Add(new ListViewItem(txtName.Text.Trim()) { Tag = genre });
 
             txtName.Text = string.Empty;
             UpdateCounter();
@@ -86,19 +92,14 @@ namespace EnterpriseGames.UI.Forms
             if (!string.IsNullOrEmpty(txtFilter.Text))
             {
                 lstGenres.Items.Clear();
-                lstGenres.Items.AddRange(_items.Where(x => x.Name.Contains(txtFilter.Text.Trim())).Select(MapToItem).ToArray());
+                lstGenres.Items.AddRange(_items.Where(x => x.Name.Contains(txtFilter.Text.Trim())).Select(x => x.MapToItem()).ToArray());
                 lstGenres.Update();
             }
             else
             {
                 lstGenres.Items.Clear();
-                lstGenres.Items.AddRange(_items.Select(MapToItem).ToArray());
+                lstGenres.Items.AddRange(_items.Select(x => x.MapToItem()).ToArray());
             }
-        }
-
-        private static ListViewItem MapToItem(Genre genre)
-        {
-            return new ListViewItem(genre.Name) { Tag = genre.Id };
         }
 
         private void UpdateCounter()
