@@ -14,7 +14,7 @@ namespace EnterpriseGames.UI
         {           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProductsForm());
+            Application.Run(new MainForm());
         }
     }
 }

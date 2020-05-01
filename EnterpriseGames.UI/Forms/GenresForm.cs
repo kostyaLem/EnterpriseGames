@@ -21,6 +21,11 @@ namespace EnterpriseGames.UI.Forms
 
         private void GenresForm_Load(object sender, System.EventArgs e)
         {
+            if (Settings.CurrentUser.UserType == Core.Other.UserType.Admin)
+            {
+                flpEditing.Enabled = true;
+            }
+
             var items = _genresService.GetAll();
 
             lstGenres.Items.AddRange(items.Select(x => x.MapToItem()).ToArray());

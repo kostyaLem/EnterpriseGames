@@ -26,6 +26,11 @@ namespace EnterpriseGames.UI.Forms
 
         private void ProductsForm_Load(object sender, EventArgs e)
         {
+            if (Settings.CurrentUser.UserType == Core.Other.UserType.Admin)
+            {
+                flpEditing.Enabled = true;
+            }
+
             UpdateDataGrid();
             UpdateCounter();
         }
@@ -43,7 +48,7 @@ namespace EnterpriseGames.UI.Forms
                                    pr.DateCreated,
                                    pr.ProductDateCreated,
                                    pr.ProductPriceHistory.LastOrDefault()?.Price,
-                                   pr.ProductPriceHistory.Any(x => !Convert.ToBoolean(x.IsDeleted)) ? true : false
+                                   pr.ProductPriceHistory.Any(x => x.IsDeleted == 0) ? true : false
                                ));
 
             _items = new List<Product>(products);

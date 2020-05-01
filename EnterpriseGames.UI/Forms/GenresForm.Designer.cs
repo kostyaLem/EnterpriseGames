@@ -31,13 +31,13 @@
             this.lstGenres = new MetroFramework.Controls.MetroListView();
             this.txtFilter = new MetroFramework.Controls.MetroTextBox();
             this.txtName = new MetroFramework.Controls.MetroTextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpEditing = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new MetroFramework.Controls.MetroButton();
             this.btnEdit = new MetroFramework.Controls.MetroButton();
             this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.lblCount = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flpEditing.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstGenres
@@ -50,6 +50,7 @@
             this.lstGenres.Location = new System.Drawing.Point(23, 152);
             this.lstGenres.MultiSelect = false;
             this.lstGenres.Name = "lstGenres";
+            this.lstGenres.OwnerDraw = true;
             this.lstGenres.ShowGroups = false;
             this.lstGenres.Size = new System.Drawing.Size(733, 229);
             this.lstGenres.TabIndex = 2;
@@ -133,19 +134,19 @@
             this.txtName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             // 
-            // flowLayoutPanel1
+            // flpEditing
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.btnRemove);
-            this.flowLayoutPanel1.Controls.Add(this.btnEdit);
-            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(232, 398);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(524, 43);
-            this.flowLayoutPanel1.TabIndex = 9;
+            this.flpEditing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.flpEditing.AutoSize = true;
+            this.flpEditing.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpEditing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpEditing.Controls.Add(this.btnRemove);
+            this.flpEditing.Controls.Add(this.btnEdit);
+            this.flpEditing.Controls.Add(this.btnAdd);
+            this.flpEditing.Location = new System.Drawing.Point(232, 398);
+            this.flpEditing.Name = "flpEditing";
+            this.flpEditing.Size = new System.Drawing.Size(524, 43);
+            this.flpEditing.TabIndex = 9;
             // 
             // btnRemove
             // 
@@ -208,7 +209,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 485);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flpEditing);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.txtName);
@@ -218,7 +219,7 @@
             this.Name = "GenresForm";
             this.Text = "Жанры игр";
             this.Load += new System.EventHandler(this.GenresForm_Load);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flpEditing.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,7 +229,7 @@
         private MetroFramework.Controls.MetroListView lstGenres;
         private MetroFramework.Controls.MetroTextBox txtFilter;
         private MetroFramework.Controls.MetroTextBox txtName;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpEditing;
         private MetroFramework.Controls.MetroButton btnRemove;
         private MetroFramework.Controls.MetroButton btnEdit;
         private MetroFramework.Controls.MetroButton btnAdd;

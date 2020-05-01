@@ -5,6 +5,7 @@ namespace EnterpriseGames.Core.Models
 {
     public partial class OrderItem
     {
+        public long Id { get; set; }
         public long OrderId { get; set; }
         public long ProductId { get; set; }
 

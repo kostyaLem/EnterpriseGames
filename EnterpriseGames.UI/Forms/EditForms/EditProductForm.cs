@@ -3,12 +3,10 @@ using EnterpriseGames.UI.Utility;
 using MetroFramework;
 using MetroFramework.Forms;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using static EnterpriseGames.UI.Utility.Helpers;
 
@@ -35,7 +33,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
             lstExistedGenres.Items.AddRange(_genres.Select(x => x.MapToItem()).ToArray());
             lstGameGenres.Items.AddRange(_product.ProductGenre.Select(x => x.Genre.MapToItem()).ToArray());
 
-            _product.ProductPriceHistory.ToList().ForEach(x => dtgPrices.Rows.Add(x.Id, x.Price, x.DateCreated, Convert.ToBoolean(x.IsDeleted)));
+            _product.ProductPriceHistory.ToList().ForEach(x => dtgPrices.Rows.Add(x.Id, x.Price, x.DateCreated, !Convert.ToBoolean(x.IsDeleted)));
 
             if (_product.Image != null)
                 using (var ms = new MemoryStream(_product.Image))
@@ -67,28 +65,28 @@ namespace EnterpriseGames.UI.Forms.EditForms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Helpers.IsAnyEmpty(string.IsNullOrEmpty, txtTitle.Text) || dtgPrices.Rows.Count == 0)
+            if (IsAnyEmpty(string.IsNullOrEmpty, txtTitle.Text) || dtgPrices.Rows.Count == 0)
             {
                 MetroMessageBox.Show(this, "Заполните обязательные поля", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.None;
                 return;
             }
 
-            var deletedGenres = _product.ProductGenre.Select(x => x.Genre)
-                                                .Except((lstGameGenres.Items as ICollection<ListViewItem>).Select(x => x.Tag as Genre),
-                                                new GenreComparer()).ToList();
+            //var deletedGenres = _product.ProductGenre.Select(x => x.Genre)
+            //                                    .Except((lstGameGenres.Items as ICollection<ListViewItem>).Select(x => x.Tag as Genre),
+            //                                    new GenreComparer())?.ToList();
 
-            foreach (var item in deletedGenres)
-            {
-                var prGenre = _product.ProductGenre.FirstOrDefault(x => x.GenreId == item.Id);
-                if (prGenre != null) _product.ProductGenre.Remove(prGenre);
-            }
+            //foreach (var item in deletedGenres)
+            //{
+            //    var prGenre = _product.ProductGenre.FirstOrDefault(x => x.GenreId == item.Id);
+            //    if (prGenre != null) _product.ProductGenre.Remove(prGenre);
+            //}
 
-            var newGenres = (lstExistedGenres.Items as ICollection<ListViewItem>).Where(x => (x.Tag as Genre).ProductGenre is null).Select(x => x.Tag as Genre);
-            foreach (var item in newGenres)
-            {
-                _product.ProductGenre.Add(new ProductGenre() { Product = _product, Genre = item });
-            }
+            //var newGenres = (lstExistedGenres.Items as ICollection<ListViewItem>).Where(x => (x.Tag as Genre).ProductGenre is null).Select(x => x.Tag as Genre);
+            //foreach (var item in newGenres)
+            //{
+            //    _product.ProductGenre.Add(new ProductGenre() { Product = _product, Genre = item });
+            //}
 
             foreach (DataGridViewRow row in dtgPrices.Rows)
             {
@@ -98,7 +96,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
                 {
                     var product = _product.ProductPriceHistory.FirstOrDefault(x => x.Id == Convert.ToInt32(id));
                     if (product != null)
-                        product.IsDeleted = Convert.ToInt32(row.Cells[3].Value);
+                        product.IsDeleted = Convert.ToInt32(!Convert.ToBoolean(row.Cells[3].Value));
                 }
                 else
                 {
@@ -106,7 +104,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
                     {
                         Price = Double.Parse(row.Cells[1].FormattedValue.ToString()),
                         DateCreated = DateTime.Now.ToShortDateString(),
-                        IsDeleted = Convert.ToInt32(row.Cells[3].Value),
+                        IsDeleted = Convert.ToInt32(!Convert.ToBoolean(row.Cells[3].Value)),
                         Product = _product
                     });
                 }

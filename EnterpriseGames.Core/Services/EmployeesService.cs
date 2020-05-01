@@ -1,5 +1,7 @@
-﻿using EnterpriseGames.Core.Models;
+﻿using EnterpriseGames.Core.Mappers;
+using EnterpriseGames.Core.Models;
 using EnterpriseGames.Core.Models.Context;
+using EnterpriseGames.Core.Other;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,29 @@ namespace EnterpriseGames.Core.Services
     {
         public EmployeesService(EnterpriseContext context) : base(context) { }
 
+        public Record[] GetOrders(long employeeId)
+        {
+            var empl = Find(employeeId);
+
+            if (empl != null)
+                return empl.Order.Select(x => x.OrderToRecord()).ToArray();
+
+            return default;
+        }
+
+        public void SetOrders(long employeeId, Record[] orders)
+        {
+            var empl = Find(employeeId);
+
+            if (empl != null)
+            {
+
+
+
+
+
+            }
+        }
     }
 
     public abstract class BaseService<T> where T : class

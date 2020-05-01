@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseGames.UI", "EnterpriseGames.UI\EnterpriseGames.UI.csproj", "{0D5C7188-320C-4A2F-A85A-6E474066604C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseGames.Core", "EnterpriseGames.Core\EnterpriseGames.Core.csproj", "{F853E927-7C18-4FF6-AF12-E57902D5A4CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnterpriseGames.Core", "EnterpriseGames.Core\EnterpriseGames.Core.csproj", "{F853E927-7C18-4FF6-AF12-E57902D5A4CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseGames.Generator", "EnterpriseGames.Generator\EnterpriseGames.Generator.csproj", "{AE536F46-E9D5-406B-B0F1-31EE9E721B99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnterpriseGames.Generator", "EnterpriseGames.Generator\EnterpriseGames.Generator.csproj", "{AE536F46-E9D5-406B-B0F1-31EE9E721B99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

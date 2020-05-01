@@ -14,6 +14,8 @@ namespace EnterpriseGames.Core.Models
         public long CustomerId { get; set; }
         public long EmployeeId { get; set; }
         public string DateCreated { get; set; }
+        public string DateClosed { get; set; }
+        public long OrderState { get; set; }
 
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }

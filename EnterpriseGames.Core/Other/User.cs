@@ -4,6 +4,7 @@ namespace EnterpriseGames.Core.Other
 {
     public class User
     {
+        public long ID { get; internal set; }
         public string Surname { get; internal set; }
         public string Name { get; internal set; }
         public string Patronymic { get; internal set; }
@@ -11,6 +12,6 @@ namespace EnterpriseGames.Core.Other
         public string Email { get; internal set; }
         public byte[] Photo { get; internal set; }
         public DateTime Birthday { get; internal set; }
-        public UserType UserType { get; internal set; }
+        public UserType UserType { get; set; }
     }
 }
