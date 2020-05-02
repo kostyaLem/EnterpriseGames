@@ -323,7 +323,8 @@
             // 
             this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnSubmit.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSubmit.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnSubmit.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnSubmit.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnSubmit.Location = new System.Drawing.Point(556, 473);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(132, 27);

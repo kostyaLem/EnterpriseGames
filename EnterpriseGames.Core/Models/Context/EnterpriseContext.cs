@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using EnterpriseGames.Core.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace EnterpriseGames.Core.Models.Context
 {
@@ -27,7 +24,7 @@ namespace EnterpriseGames.Core.Models.Context
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Phone).IsRequired();
             });
@@ -36,7 +33,7 @@ namespace EnterpriseGames.Core.Models.Context
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Birthday).IsRequired();
 
@@ -55,7 +52,7 @@ namespace EnterpriseGames.Core.Models.Context
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Name).IsRequired();
             });
@@ -64,7 +61,7 @@ namespace EnterpriseGames.Core.Models.Context
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CustomerId).HasColumnName("Customer_ID");
 
@@ -87,7 +84,7 @@ namespace EnterpriseGames.Core.Models.Context
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.OrderId).HasColumnName("Order_ID");
 
@@ -108,7 +105,7 @@ namespace EnterpriseGames.Core.Models.Context
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateCreated).IsRequired();
 
@@ -138,7 +135,7 @@ namespace EnterpriseGames.Core.Models.Context
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateCreated).IsRequired();
 

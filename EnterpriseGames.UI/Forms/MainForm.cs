@@ -75,7 +75,7 @@ namespace EnterpriseGames.UI.Forms
                 var recordID = Convert.ToInt32(dtgOrders.SelectedRows[0].Cells[0].FormattedValue);
                 var record = _items.First(x => x.ID == recordID);
 
-                foreach(var item in record.Items)
+                foreach (var item in record.Items)
                 {
                     dtgItems.Rows.Add(item.ID, item.Name, item.Price);
                 }
@@ -159,6 +159,11 @@ namespace EnterpriseGames.UI.Forms
         {
             _timer?.Stop();
             _timer?.Dispose();
+        }
+
+        private void brnAdd_Click(object sender, EventArgs e)
+        {
+            new EditOrderForm(new Record()).ShowDialog();
         }
     }
 }

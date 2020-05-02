@@ -7,6 +7,11 @@ namespace EnterpriseGames.Core.Mappers
 {
     internal static class Mappers
     {
+        internal static CustomerDto CustomerToDto(this Customer customer)
+        {
+            return new CustomerDto() { ID = customer.Id, Name = customer.Name, Surname = customer.Surname };
+        }
+
         internal static Record OrderToRecord(this Order order)
         {
             var customer = order.Customer;
@@ -19,7 +24,7 @@ namespace EnterpriseGames.Core.Mappers
                 DateClosed = order.DateClosed,
                 CustomerFullName = string.Join(" ", customer.Surname, customer.Name),
                 EmployeeFullName = string.Join(" ", employee.Surname, employee.Name, employee.Patronymic),
-                
+
             };
 
             record.Items = order.OrderItem.Select(x =>

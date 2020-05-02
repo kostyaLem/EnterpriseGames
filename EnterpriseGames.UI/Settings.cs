@@ -17,7 +17,7 @@ namespace EnterpriseGames.UI
                 .UseSqlite("Filename=desktop_games.db")
                 .UseLazyLoadingProxies().EnableSensitiveDataLogging().Options);
 
-            CurrentUser = new User() { UserType = UserType.Employee };
+            CurrentUser = new User() { UserType = UserType.Admin };
         }
 
         internal static ListViewItem MapToItem(this Genre genre)

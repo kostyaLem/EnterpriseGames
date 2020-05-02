@@ -163,6 +163,8 @@
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRemove.Enabled = false;
+            this.btnRemove.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnRemove.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnRemove.Location = new System.Drawing.Point(3, 3);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(168, 35);
@@ -175,6 +177,8 @@
             // 
             this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEdit.Enabled = false;
+            this.btnEdit.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnEdit.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnEdit.Location = new System.Drawing.Point(177, 3);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(168, 35);
@@ -186,6 +190,8 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnAdd.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnAdd.Location = new System.Drawing.Point(351, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(168, 35);

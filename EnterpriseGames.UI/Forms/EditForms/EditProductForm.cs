@@ -72,21 +72,13 @@ namespace EnterpriseGames.UI.Forms.EditForms
                 return;
             }
 
-            //var deletedGenres = _product.ProductGenre.Select(x => x.Genre)
-            //                                    .Except((lstGameGenres.Items as ICollection<ListViewItem>).Select(x => x.Tag as Genre),
-            //                                    new GenreComparer())?.ToList();
-
-            //foreach (var item in deletedGenres)
-            //{
-            //    var prGenre = _product.ProductGenre.FirstOrDefault(x => x.GenreId == item.Id);
-            //    if (prGenre != null) _product.ProductGenre.Remove(prGenre);
-            //}
-
-            //var newGenres = (lstExistedGenres.Items as ICollection<ListViewItem>).Where(x => (x.Tag as Genre).ProductGenre is null).Select(x => x.Tag as Genre);
-            //foreach (var item in newGenres)
-            //{
-            //    _product.ProductGenre.Add(new ProductGenre() { Product = _product, Genre = item });
-            //}
+            _product.ProductGenre.Clear();
+            
+            foreach(ListViewItem item in lstGameGenres.Items)
+            {
+                var genre = item.Tag as Genre;
+                _product.ProductGenre.Add(new ProductGenre() { Genre = genre, Product = _product });
+            }
 
             foreach (DataGridViewRow row in dtgPrices.Rows)
             {
@@ -137,12 +129,24 @@ namespace EnterpriseGames.UI.Forms.EditForms
 
         private void btnRemoveGanre_Click(object sender, EventArgs e)
         {
-
+            lstGameGenres.Items.Remove(lstGameGenres.SelectedItems[0]);
         }
 
         private void btnAddNewGenre_Click(object sender, EventArgs e)
         {
+            var genre = lstExistedGenres.SelectedItems[0].Tag as Genre;
 
+            foreach (ListViewItem item in lstGameGenres.Items)
+            {
+                if ((item.Tag as Genre).Id == genre.Id)
+                {
+                    MetroMessageBox.Show(this, "Данный жанр уже добавлен", "Справка", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+
+            var newItem = new ListViewItem(genre.Name) { Tag = genre };
+            lstGameGenres.Items.Add(newItem);
         }
 
         private void lstExistedGenres_SelectedIndexChanged(object sender, EventArgs e)
