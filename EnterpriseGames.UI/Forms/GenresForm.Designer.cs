@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstGenres = new MetroFramework.Controls.MetroListView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenresForm));
             this.txtFilter = new MetroFramework.Controls.MetroTextBox();
             this.txtName = new MetroFramework.Controls.MetroTextBox();
             this.flpEditing = new System.Windows.Forms.FlowLayoutPanel();
@@ -37,27 +37,9 @@
             this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.lblCount = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.lstGenres = new MetroFramework.Controls.MetroListView();
             this.flpEditing.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lstGenres
-            // 
-            this.lstGenres.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstGenres.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lstGenres.FullRowSelect = true;
-            this.lstGenres.Location = new System.Drawing.Point(23, 152);
-            this.lstGenres.MultiSelect = false;
-            this.lstGenres.Name = "lstGenres";
-            this.lstGenres.OwnerDraw = true;
-            this.lstGenres.ShowGroups = false;
-            this.lstGenres.Size = new System.Drawing.Size(733, 229);
-            this.lstGenres.TabIndex = 2;
-            this.lstGenres.UseCompatibleStateImageBehavior = false;
-            this.lstGenres.UseSelectable = true;
-            this.lstGenres.View = System.Windows.Forms.View.SmallIcon;
-            this.lstGenres.SelectedIndexChanged += new System.EventHandler(this.lstGenres_SelectedIndexChanged);
             // 
             // txtFilter
             // 
@@ -83,7 +65,6 @@
             this.txtFilter.MaxLength = 32767;
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.PasswordChar = '\0';
-            this.txtFilter.PromptText = "Фильтр поиска";
             this.txtFilter.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtFilter.SelectedText = "";
             this.txtFilter.SelectionLength = 0;
@@ -121,7 +102,6 @@
             this.txtName.MaxLength = 32767;
             this.txtName.Name = "txtName";
             this.txtName.PasswordChar = '\0';
-            this.txtName.PromptText = "Название";
             this.txtName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtName.SelectedText = "";
             this.txtName.SelectionLength = 0;
@@ -143,7 +123,7 @@
             this.flpEditing.Controls.Add(this.btnRemove);
             this.flpEditing.Controls.Add(this.btnEdit);
             this.flpEditing.Controls.Add(this.btnAdd);
-            this.flpEditing.Location = new System.Drawing.Point(232, 398);
+            this.flpEditing.Location = new System.Drawing.Point(232, 410);
             this.flpEditing.Name = "flpEditing";
             this.flpEditing.Size = new System.Drawing.Size(524, 43);
             this.flpEditing.TabIndex = 9;
@@ -152,6 +132,8 @@
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRemove.Enabled = false;
+            this.btnRemove.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnRemove.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnRemove.Location = new System.Drawing.Point(3, 3);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(168, 35);
@@ -164,6 +146,8 @@
             // 
             this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEdit.Enabled = false;
+            this.btnEdit.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnEdit.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnEdit.Location = new System.Drawing.Point(177, 3);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(168, 35);
@@ -175,6 +159,8 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnAdd.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnAdd.Location = new System.Drawing.Point(351, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(168, 35);
@@ -200,21 +186,41 @@
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.Location = new System.Drawing.Point(23, 416);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(106, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(120, 25);
             this.metroLabel1.TabIndex = 7;
-            this.metroLabel1.Text = "Количество:";
+            this.metroLabel1.Text = "Количество: 0";
+            // 
+            // lstGenres
+            // 
+            this.lstGenres.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstGenres.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lstGenres.FullRowSelect = true;
+            this.lstGenres.Location = new System.Drawing.Point(23, 152);
+            this.lstGenres.MultiSelect = false;
+            this.lstGenres.Name = "lstGenres";
+            this.lstGenres.OwnerDraw = true;
+            this.lstGenres.ShowGroups = false;
+            this.lstGenres.Size = new System.Drawing.Size(733, 240);
+            this.lstGenres.TabIndex = 53;
+            this.lstGenres.UseCompatibleStateImageBehavior = false;
+            this.lstGenres.UseSelectable = true;
+            this.lstGenres.View = System.Windows.Forms.View.SmallIcon;
+            this.lstGenres.SelectedIndexChanged += new System.EventHandler(this.lstGenres_SelectedIndexChanged);
             // 
             // GenresForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 485);
+            this.Controls.Add(this.lstGenres);
             this.Controls.Add(this.flpEditing);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtFilter);
-            this.Controls.Add(this.lstGenres);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(790, 485);
             this.Name = "GenresForm";
             this.Text = "Жанры игр";
@@ -226,7 +232,6 @@
         }
 
         #endregion
-        private MetroFramework.Controls.MetroListView lstGenres;
         private MetroFramework.Controls.MetroTextBox txtFilter;
         private MetroFramework.Controls.MetroTextBox txtName;
         private System.Windows.Forms.FlowLayoutPanel flpEditing;
@@ -235,5 +240,6 @@
         private MetroFramework.Controls.MetroButton btnAdd;
         private MetroFramework.Controls.MetroLabel lblCount;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroListView lstGenres;
     }
 }

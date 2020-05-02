@@ -1,14 +1,16 @@
-﻿using EnterpriseGames.Core.Other;
+﻿using EnterpriseGames.Core.Models;
+using EnterpriseGames.Core.Other;
 using EnterpriseGames.Core.Services;
 using MetroFramework;
 using MetroFramework.Forms;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace EnterpriseGames.UI.Forms
+namespace EnterpriseGames.UI.Forms.EditForms
 {
     public partial class EditOrderForm : MetroForm
     {
@@ -48,17 +50,40 @@ namespace EnterpriseGames.UI.Forms
 
             var games = _productsService.GetAll(x => x.ProductPriceHistory.Any(z => z.IsDeleted == 0));
             games.ToList().ForEach(pr =>
-                           dtgGames.Rows.Add(
-                                   pr.Id,
-                                   pr.Title,
-                                   pr.ProductDateCreated,
-                                   pr.ProductPriceHistory.LastOrDefault(x => x.IsDeleted == 0)?.Price
-                               ));
+            {
+                dtgGames.Rows.Add(
+                        pr.Id,
+                        pr.Title,
+                        pr.ProductDateCreated,
+                        pr.ProductPriceHistory.LastOrDefault(x => x.IsDeleted == 0).Price
+                    );
+
+                dtgGames.Rows[dtgGames.RowCount - 1].Tag = pr.ProductPriceHistory.LastOrDefault(x => x.IsDeleted == 0).Id;
+            });
 
             if (!string.IsNullOrEmpty(_record.DateCreated))
+            {
                 if (DateTime.TryParse(_record.DateCreated, out DateTime dateCreated))
+                {
                     dtpCreated.Value = dateCreated;
+                    dtpCreated.Enabled = false;
+                }
+            }
+            else
+            {
+                dtpCreated.Value = DateTime.Now;
+            }
+        }
 
+        private void CalcSum()
+        {
+            double sum = 0;
+            foreach (DataGridViewRow row in dtgBasket.Rows)
+            {
+                sum += double.Parse(row.Cells[3].FormattedValue.ToString());
+            }
+
+            lblSum.Text = $"ИТОГ: {Math.Round(sum, 2):N2} р.";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -81,12 +106,17 @@ namespace EnterpriseGames.UI.Forms
             newRow.Cells.Add(new DataGridViewTextBoxCell() { Value = cells[2].Value });
             newRow.Cells.Add(new DataGridViewTextBoxCell() { Value = cells[3].Value });
 
+            newRow.Tag = dtgGames.SelectedRows[0].Tag;
             dtgBasket.Rows.Add(newRow);
+
+            CalcSum();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             dtgBasket.Rows.Remove(dtgBasket.SelectedRows[0]);
+
+            CalcSum();
         }
 
         private void btnRemoveCustomer_Click(object sender, EventArgs e)
@@ -116,6 +146,35 @@ namespace EnterpriseGames.UI.Forms
             {
                 btnRemove.Enabled = false;
             }
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (cbStatus.SelectedIndex == -1)
+            { MetroMessageBox.Show(this, "Выберите статус заказа", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+
+            if (dtgBasket.Rows.Count == 0)
+            { MetroMessageBox.Show(this, "Добавьте предметы в корзину", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+
+            if (string.IsNullOrEmpty(_record.DateCreated))
+                _record.DateCreated = dtpCreated.Value.ToShortDateString();
+            if (_record.State == RecordState.Closed)
+                _record.DateClosed = DateTime.Now.ToShortDateString();
+
+            if (cbClients.SelectedIndex != -1)
+                _record.CustomerID = (cbClients.SelectedItem as CustomerDto).ID;
+
+            _record.State = (cbStatus.SelectedItem as Status).State;
+
+            foreach (DataGridViewRow row in dtgBasket.Rows)
+            {
+                _record.Items.Add(new Item()
+                {
+                    ProductID = Convert.ToInt32(row.Tag)
+                });
+            }
+
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

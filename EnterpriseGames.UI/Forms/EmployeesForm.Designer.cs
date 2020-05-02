@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeesForm));
             this.dataGrid = new MetroFramework.Controls.MetroGrid();
             this.RowId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -207,9 +208,9 @@
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.Location = new System.Drawing.Point(23, 424);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(106, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(120, 25);
             this.metroLabel1.TabIndex = 4;
-            this.metroLabel1.Text = "Количество:";
+            this.metroLabel1.Text = "Количество: 0";
             // 
             // lblCount
             // 
@@ -248,8 +249,10 @@
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.dataGrid);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(830, 460);
             this.Name = "EmployeesForm";
+            this.Resizable = false;
             this.Text = "Работники";
             this.Load += new System.EventHandler(this.EmployeesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();

@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProductForm));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.txtTitle = new MetroFramework.Controls.MetroTextBox();
@@ -56,11 +57,11 @@
             this.txtNewPrice = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.lstGameGenres = new MetroFramework.Controls.MetroListView();
             this.btnAddNewGenre = new MetroFramework.Controls.MetroButton();
             this.btnRemoveGanre = new MetroFramework.Controls.MetroButton();
             this.picGame = new System.Windows.Forms.PictureBox();
             this.lstExistedGenres = new MetroFramework.Controls.MetroListView();
+            this.lstGameGenres = new MetroFramework.Controls.MetroListView();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPrices)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picGame)).BeginInit();
@@ -70,7 +71,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(324, 60);
+            this.metroLabel1.Location = new System.Drawing.Point(324, 65);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(88, 25);
             this.metroLabel1.TabIndex = 4;
@@ -80,7 +81,7 @@
             // 
             this.metroLabel10.AutoSize = true;
             this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel10.Location = new System.Drawing.Point(404, 60);
+            this.metroLabel10.Location = new System.Drawing.Point(404, 65);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(19, 25);
             this.metroLabel10.TabIndex = 26;
@@ -92,7 +93,7 @@
             // 
             // 
             this.txtTitle.CustomButton.Image = null;
-            this.txtTitle.CustomButton.Location = new System.Drawing.Point(450, 2);
+            this.txtTitle.CustomButton.Location = new System.Drawing.Point(467, 2);
             this.txtTitle.CustomButton.Name = "";
             this.txtTitle.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txtTitle.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -102,7 +103,7 @@
             this.txtTitle.CustomButton.Visible = false;
             this.txtTitle.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtTitle.Lines = new string[0];
-            this.txtTitle.Location = new System.Drawing.Point(324, 88);
+            this.txtTitle.Location = new System.Drawing.Point(324, 93);
             this.txtTitle.MaxLength = 32767;
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.PasswordChar = '\0';
@@ -111,7 +112,7 @@
             this.txtTitle.SelectionLength = 0;
             this.txtTitle.SelectionStart = 0;
             this.txtTitle.ShortcutsEnabled = true;
-            this.txtTitle.Size = new System.Drawing.Size(476, 28);
+            this.txtTitle.Size = new System.Drawing.Size(493, 28);
             this.txtTitle.TabIndex = 25;
             this.txtTitle.UseSelectable = true;
             this.txtTitle.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -121,7 +122,7 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel2.Location = new System.Drawing.Point(324, 116);
+            this.metroLabel2.Location = new System.Drawing.Point(324, 129);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(92, 25);
             this.metroLabel2.TabIndex = 27;
@@ -133,9 +134,9 @@
             // 
             // 
             this.txtDesc.CustomButton.Image = null;
-            this.txtDesc.CustomButton.Location = new System.Drawing.Point(282, 2);
+            this.txtDesc.CustomButton.Location = new System.Drawing.Point(311, 1);
             this.txtDesc.CustomButton.Name = "";
-            this.txtDesc.CustomButton.Size = new System.Drawing.Size(191, 191);
+            this.txtDesc.CustomButton.Size = new System.Drawing.Size(181, 181);
             this.txtDesc.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtDesc.CustomButton.TabIndex = 1;
             this.txtDesc.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -143,7 +144,7 @@
             this.txtDesc.CustomButton.Visible = false;
             this.txtDesc.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtDesc.Lines = new string[0];
-            this.txtDesc.Location = new System.Drawing.Point(324, 144);
+            this.txtDesc.Location = new System.Drawing.Point(324, 157);
             this.txtDesc.MaxLength = 32767;
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
@@ -153,7 +154,7 @@
             this.txtDesc.SelectionLength = 0;
             this.txtDesc.SelectionStart = 0;
             this.txtDesc.ShortcutsEnabled = true;
-            this.txtDesc.Size = new System.Drawing.Size(476, 196);
+            this.txtDesc.Size = new System.Drawing.Size(493, 183);
             this.txtDesc.TabIndex = 28;
             this.txtDesc.UseSelectable = true;
             this.txtDesc.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -176,7 +177,8 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnCancel.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnCancel.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnCancel.Location = new System.Drawing.Point(3, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(142, 27);
@@ -261,28 +263,28 @@
             this.dtgPrices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgPrices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgPrices.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgPrices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgPrices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgPrices.ColumnHeadersHeight = 30;
             this.dtgPrices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.PriceDate,
             this.IsExist});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgPrices.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgPrices.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgPrices.EnableHeadersVisualStyles = false;
             this.dtgPrices.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtgPrices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -290,14 +292,14 @@
             this.dtgPrices.MultiSelect = false;
             this.dtgPrices.Name = "dtgPrices";
             this.dtgPrices.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgPrices.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgPrices.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgPrices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dtgPrices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgPrices.Size = new System.Drawing.Size(349, 216);
@@ -384,7 +386,6 @@
             this.txtNewPrice.MaxLength = 32767;
             this.txtNewPrice.Name = "txtNewPrice";
             this.txtNewPrice.PasswordChar = '\0';
-            this.txtNewPrice.PromptText = "Новая цена";
             this.txtNewPrice.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtNewPrice.SelectedText = "";
             this.txtNewPrice.SelectionLength = 0;
@@ -411,34 +412,18 @@
             // 
             this.metroLabel8.AutoSize = true;
             this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel8.Location = new System.Drawing.Point(472, 366);
+            this.metroLabel8.Location = new System.Drawing.Point(447, 366);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(183, 25);
             this.metroLabel8.TabIndex = 47;
             this.metroLabel8.Text = "Добавленные жанры:";
-            // 
-            // lstGameGenres
-            // 
-            this.lstGameGenres.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lstGameGenres.FullRowSelect = true;
-            this.lstGameGenres.Location = new System.Drawing.Point(472, 394);
-            this.lstGameGenres.MultiSelect = false;
-            this.lstGameGenres.Name = "lstGameGenres";
-            this.lstGameGenres.OwnerDraw = true;
-            this.lstGameGenres.ShowGroups = false;
-            this.lstGameGenres.Size = new System.Drawing.Size(345, 132);
-            this.lstGameGenres.TabIndex = 48;
-            this.lstGameGenres.UseCompatibleStateImageBehavior = false;
-            this.lstGameGenres.UseSelectable = true;
-            this.lstGameGenres.View = System.Windows.Forms.View.SmallIcon;
-            this.lstGameGenres.SelectedIndexChanged += new System.EventHandler(this.lstGameGenres_SelectedIndexChanged);
             // 
             // btnAddNewGenre
             // 
             this.btnAddNewGenre.BackgroundImage = global::EnterpriseGames.UI.Properties.Resources.right;
             this.btnAddNewGenre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAddNewGenre.Enabled = false;
-            this.btnAddNewGenre.Location = new System.Drawing.Point(429, 394);
+            this.btnAddNewGenre.Location = new System.Drawing.Point(404, 394);
             this.btnAddNewGenre.Name = "btnAddNewGenre";
             this.btnAddNewGenre.Size = new System.Drawing.Size(37, 63);
             this.btnAddNewGenre.TabIndex = 50;
@@ -450,7 +435,7 @@
             this.btnRemoveGanre.BackgroundImage = global::EnterpriseGames.UI.Properties.Resources.left;
             this.btnRemoveGanre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRemoveGanre.Enabled = false;
-            this.btnRemoveGanre.Location = new System.Drawing.Point(429, 463);
+            this.btnRemoveGanre.Location = new System.Drawing.Point(404, 463);
             this.btnRemoveGanre.Name = "btnRemoveGanre";
             this.btnRemoveGanre.Size = new System.Drawing.Size(37, 63);
             this.btnRemoveGanre.TabIndex = 51;
@@ -479,22 +464,41 @@
             this.lstExistedGenres.Name = "lstExistedGenres";
             this.lstExistedGenres.OwnerDraw = true;
             this.lstExistedGenres.ShowGroups = false;
-            this.lstExistedGenres.Size = new System.Drawing.Size(400, 132);
+            this.lstExistedGenres.Size = new System.Drawing.Size(375, 132);
             this.lstExistedGenres.TabIndex = 52;
             this.lstExistedGenres.UseCompatibleStateImageBehavior = false;
             this.lstExistedGenres.UseSelectable = true;
             this.lstExistedGenres.View = System.Windows.Forms.View.SmallIcon;
             this.lstExistedGenres.SelectedIndexChanged += new System.EventHandler(this.lstExistedGenres_SelectedIndexChanged);
             // 
+            // lstGameGenres
+            // 
+            this.lstGameGenres.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstGameGenres.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lstGameGenres.FullRowSelect = true;
+            this.lstGameGenres.Location = new System.Drawing.Point(447, 394);
+            this.lstGameGenres.MultiSelect = false;
+            this.lstGameGenres.Name = "lstGameGenres";
+            this.lstGameGenres.OwnerDraw = true;
+            this.lstGameGenres.ShowGroups = false;
+            this.lstGameGenres.Size = new System.Drawing.Size(375, 132);
+            this.lstGameGenres.TabIndex = 53;
+            this.lstGameGenres.UseCompatibleStateImageBehavior = false;
+            this.lstGameGenres.UseSelectable = true;
+            this.lstGameGenres.View = System.Windows.Forms.View.SmallIcon;
+            this.lstGameGenres.SelectedIndexChanged += new System.EventHandler(this.lstGameGenres_SelectedIndexChanged);
+            // 
             // EditProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1195, 554);
+            this.Controls.Add(this.lstGameGenres);
             this.Controls.Add(this.lstExistedGenres);
             this.Controls.Add(this.btnRemoveGanre);
             this.Controls.Add(this.btnAddNewGenre);
-            this.Controls.Add(this.lstGameGenres);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.txtNewPrice);
@@ -515,6 +519,7 @@
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.picGame);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditProductForm";
             this.Resizable = false;
             this.Text = "Редактирование игры";
@@ -555,9 +560,9 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsExist;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroListView lstGameGenres;
         private MetroFramework.Controls.MetroButton btnAddNewGenre;
         private MetroFramework.Controls.MetroButton btnRemoveGanre;
         private MetroFramework.Controls.MetroListView lstExistedGenres;
+        private MetroFramework.Controls.MetroListView lstGameGenres;
     }
 }

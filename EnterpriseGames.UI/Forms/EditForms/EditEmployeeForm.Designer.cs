@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditEmployeeForm));
             this.btnLoadImage = new MetroFramework.Controls.MetroButton();
             this.btnRemoveImage = new MetroFramework.Controls.MetroButton();
             this.picImage = new System.Windows.Forms.PictureBox();
@@ -312,9 +313,11 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnCancel.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnCancel.Location = new System.Drawing.Point(323, 473);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(122, 27);
+            this.btnCancel.Size = new System.Drawing.Size(122, 43);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseSelectable = true;
@@ -327,7 +330,7 @@
             this.btnSubmit.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnSubmit.Location = new System.Drawing.Point(556, 473);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(132, 27);
+            this.btnSubmit.Size = new System.Drawing.Size(132, 43);
             this.btnSubmit.TabIndex = 17;
             this.btnSubmit.Text = "Подтвердить";
             this.btnSubmit.UseSelectable = true;
@@ -568,6 +571,7 @@
             this.Controls.Add(this.btnRemoveImage);
             this.Controls.Add(this.btnLoadImage);
             this.Controls.Add(this.picImage);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "EditEmployeeForm";
             this.Resizable = false;

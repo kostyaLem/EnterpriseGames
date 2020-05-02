@@ -24,7 +24,9 @@ namespace EnterpriseGames.Core.Mappers
                 DateClosed = order.DateClosed,
                 CustomerFullName = string.Join(" ", customer.Surname, customer.Name),
                 EmployeeFullName = string.Join(" ", employee.Surname, employee.Name, employee.Patronymic),
-
+                CustomerID = customer.Id,
+                EmployeeID = employee.Id,
+                State = (RecordState)order.OrderState
             };
 
             record.Items = order.OrderItem.Select(x =>
@@ -32,11 +34,27 @@ namespace EnterpriseGames.Core.Mappers
                                                {
                                                    ID = x.Id,
                                                    Name = x.Product.Product.Title,
-                                                   Price = x.Product.Price
-                                               }).ToArray();
+                                                   Price = x.Product.Price,
+                                                   ProductID = x.ProductId
+                                               }).ToList();
 
             return record;
         }
+
+        internal static Order RecordToOrder(this Record record)
+        {
+            return new Order()
+            {
+                Id = record.ID,
+
+                OrderState = (int)record.State,
+                DateCreated = record.DateCreated,
+                DateClosed = record.DateClosed,
+                CustomerId = record.CustomerID,
+                EmployeeId = record.EmployeeID
+            };
+        }
+
 
         internal static User EmployeeToUser(this Employee emp)
         {

@@ -4,7 +4,7 @@ namespace EnterpriseGames.Core.Other
 {
     public class User
     {
-        public long ID { get; internal set; }
+        public long ID { get; set; }
         public string Surname { get; internal set; }
         public string Name { get; internal set; }
         public string Patronymic { get; internal set; }

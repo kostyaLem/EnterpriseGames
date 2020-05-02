@@ -62,6 +62,8 @@ namespace EnterpriseGames.UI.Forms
         private void dataGrid_SelectionChanged(object sender, EventArgs e)
         {
             dtgPrices.Rows.Clear();
+            dtgGenres.Rows.Clear();
+
             if (dataGrid.SelectedRows.Count != 0)
             {
                 btnRemove.Enabled = btnEdit.Enabled = true;
@@ -75,6 +77,7 @@ namespace EnterpriseGames.UI.Forms
                         picGame.Image = Image.FromStream(ms);
 
                 selectedProduct.ProductPriceHistory.ToList().ForEach(x => dtgPrices.Rows.Add(x.Id, x.Price, x.DateCreated));
+                selectedProduct.ProductGenre.ToList().ForEach(x => dtgGenres.Rows.Add(x.GenreId, x.Genre.Name));
             }
             else
             {

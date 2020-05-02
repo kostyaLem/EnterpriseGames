@@ -1,6 +1,7 @@
 ﻿using EnterpriseGames.Core.Models;
 using EnterpriseGames.Core.Other;
 using EnterpriseGames.Core.Services;
+using EnterpriseGames.UI.Forms.EditForms;
 using MetroFramework;
 using MetroFramework.Forms;
 using System;
@@ -60,7 +61,7 @@ namespace EnterpriseGames.UI.Forms
                 foreach (var order in _items)
                 {
                     dtgOrders.Rows.Add(order.ID, order.EmployeeFullName, order.CustomerFullName,
-                                       order.Items.Length, order.DateCreated, order.DateClosed,
+                                       order.Items.Count, order.DateCreated, order.DateClosed,
                                        order.State == RecordState.Editing ? ORDER_EDITING : ORDER_CLOSED);
                 }
             }
@@ -101,6 +102,8 @@ namespace EnterpriseGames.UI.Forms
                 btnShowEmployees.Enabled = false;
                 btnShowOrders.Enabled = false;
             }
+
+            UpdateOrdersDtg();
         }
 
         private void metroToggle1_CheckedChanged(object sender, EventArgs e)
@@ -163,7 +166,16 @@ namespace EnterpriseGames.UI.Forms
 
         private void brnAdd_Click(object sender, EventArgs e)
         {
-            new EditOrderForm(new Record()).ShowDialog();
+            var record = new Record();
+            
+            var result = new EditOrderForm(record).ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                record.EmployeeID = _currentUser.ID;
+
+                _empService.SetOrder(_currentUser.ID, record);
+            }
         }
     }
 }

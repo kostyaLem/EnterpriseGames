@@ -1,4 +1,7 @@
-﻿namespace EnterpriseGames.Core.Other
+﻿using EnterpriseGames.Core.Models;
+using System.Collections.Generic;
+
+namespace EnterpriseGames.Core.Other
 {
     public enum RecordState
     {
@@ -10,11 +13,14 @@
     public class Record
     {
         public long ID { get; internal set; }
-        public string EmployeeFullName { get; internal set; }
-        public string CustomerFullName { get; internal set; }
-        public string DateCreated { get; internal set; }
-        public string DateClosed { get; internal set; }
-        public RecordState State { get; internal set; }
-        public Item[] Items { get; internal set; }
+        public string EmployeeFullName { get; set; }
+        public string CustomerFullName { get; set; }
+        public string DateCreated { get; set; }
+        public string DateClosed { get; set; }
+        public RecordState State { get; set; }
+        public List<Item> Items { get; set; } = new List<Item>();
+
+        public long CustomerID { get; set; }
+        public long EmployeeID { get; set; }
     }
 }

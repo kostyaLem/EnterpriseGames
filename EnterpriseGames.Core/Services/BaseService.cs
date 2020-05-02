@@ -8,7 +8,7 @@ namespace EnterpriseGames.Core.Services
 {
     public abstract class BaseService<T> where T : class
     {
-        private readonly EnterpriseContext _context;
+        protected internal readonly EnterpriseContext _context;
 
         public BaseService(EnterpriseContext context)
         {
