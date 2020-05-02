@@ -22,6 +22,7 @@ namespace EnterpriseGames.UI.Forms
         private void EmployeesForm_Load(object sender, EventArgs e)
         {
             UpdateDataGrid();
+            UpdateCounter();
         }
 
         private void UpdateDataGrid()
@@ -83,7 +84,6 @@ namespace EnterpriseGames.UI.Forms
                     _empService.Update(emp);
                     MetroMessageBox.Show(this, $"Пользователь {emp.Login} изменен", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateDataGrid();
-                    UpdateCounter();
                 }
             }
         }

@@ -59,8 +59,18 @@ namespace EnterpriseGames.UI.Forms.EditForms
                 return;
             }
 
-            dtgPrices.Rows.Add("", txtNewPrice.Text.Trim(), DateTime.Now.ToShortDateString(), true);
-            txtNewPrice.Text = string.Empty;
+            var str = txtNewPrice.Text.Trim().Replace('.', ',');
+            if (double.TryParse(str, out double value))
+            {
+                dtgPrices.Rows.Add("", value.ToString("N2") + " р.", DateTime.Now.ToShortDateString(), true);
+                txtNewPrice.Text = string.Empty;
+                txtNewPrice.Focus();
+            }
+            else
+            {
+                MetroMessageBox.Show(this, "Некорректный ввод стоимости", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -73,8 +83,8 @@ namespace EnterpriseGames.UI.Forms.EditForms
             }
 
             _product.ProductGenre.Clear();
-            
-            foreach(ListViewItem item in lstGameGenres.Items)
+
+            foreach (ListViewItem item in lstGameGenres.Items)
             {
                 var genre = item.Tag as Genre;
                 _product.ProductGenre.Add(new ProductGenre() { Genre = genre, Product = _product });
@@ -94,7 +104,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
                 {
                     _product.ProductPriceHistory.Add(new ProductPriceHistory()
                     {
-                        Price = Double.Parse(row.Cells[1].FormattedValue.ToString()),
+                        Price = Double.Parse(row.Cells[1].FormattedValue.ToString().Replace(" р.", "")),
                         DateCreated = DateTime.Now.ToShortDateString(),
                         IsDeleted = Convert.ToInt32(!Convert.ToBoolean(row.Cells[3].Value)),
                         Product = _product

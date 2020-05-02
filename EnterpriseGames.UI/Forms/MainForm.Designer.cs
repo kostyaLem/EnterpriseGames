@@ -75,7 +75,8 @@
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.btnEdit = new MetroFramework.Controls.MetroButton();
-            this.btnRemove = new MetroFramework.Controls.MetroButton();
+            this.lblCount = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -571,19 +572,18 @@
             this.flowLayoutPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel4.Controls.Add(this.btnAdd);
             this.flowLayoutPanel4.Controls.Add(this.btnEdit);
-            this.flowLayoutPanel4.Controls.Add(this.btnRemove);
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(841, 569);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(966, 569);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(377, 48);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(252, 48);
             this.flowLayoutPanel4.TabIndex = 8;
             // 
             // btnAdd
             // 
             this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnAdd.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnAdd.Location = new System.Drawing.Point(253, 3);
+            this.btnAdd.Location = new System.Drawing.Point(128, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(119, 40);
             this.btnAdd.TabIndex = 8;
@@ -595,7 +595,7 @@
             // 
             this.btnEdit.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnEdit.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnEdit.Location = new System.Drawing.Point(128, 3);
+            this.btnEdit.Location = new System.Drawing.Point(3, 3);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(119, 40);
             this.btnEdit.TabIndex = 9;
@@ -603,22 +603,35 @@
             this.btnEdit.UseSelectable = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnRemove
+            // lblCount
             // 
-            this.btnRemove.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.btnRemove.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnRemove.Location = new System.Drawing.Point(3, 3);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(119, 40);
-            this.btnRemove.TabIndex = 10;
-            this.btnRemove.Text = "Удалить";
-            this.btnRemove.UseSelectable = true;
+            this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCount.AutoSize = true;
+            this.lblCount.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblCount.Location = new System.Drawing.Point(463, 94);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(21, 25);
+            this.lblCount.TabIndex = 10;
+            this.lblCount.Text = "0";
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel4.Location = new System.Drawing.Point(359, 94);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(111, 25);
+            this.metroLabel4.TabIndex = 9;
+            this.metroLabel4.Text = "Количество: ";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 637);
+            this.Controls.Add(this.lblCount);
+            this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.flowLayoutPanel4);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroToggle1);
@@ -678,7 +691,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private MetroFramework.Controls.MetroButton btnAdd;
         private MetroFramework.Controls.MetroButton btnEdit;
-        private MetroFramework.Controls.MetroButton btnRemove;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceDate;
@@ -691,5 +703,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderState;
         private MetroFramework.Controls.MetroButton btnShowCustomers;
+        private MetroFramework.Controls.MetroLabel lblCount;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
     }
 }

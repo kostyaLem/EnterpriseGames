@@ -1,5 +1,4 @@
-﻿using EnterpriseGames.Core.Models;
-using EnterpriseGames.Core.Other;
+﻿using EnterpriseGames.Core.Other;
 using EnterpriseGames.Core.Services;
 using EnterpriseGames.UI.Forms.EditForms;
 using MetroFramework;
@@ -27,8 +26,15 @@ namespace EnterpriseGames.UI.Forms
             InitializeComponent();
 
             Application.ApplicationExit += Application_ApplicationExit;
+            this.FormClosing += MainForm_FormClosing;
 
             _user = Settings.CurrentUser;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _timer?.Stop();
+            _timer?.Dispose();
         }
 
         private void tglShowMenu_CheckedChanged(object sender, System.EventArgs e)
@@ -74,9 +80,6 @@ namespace EnterpriseGames.UI.Forms
             {
                 dtgItems.Rows.Clear();
 
-                if (_user.UserType == UserType.Admin)
-                    btnRemove.Enabled = true;
-
                 var recordID = Convert.ToInt32(dtgOrders.SelectedRows[0].Cells[0].FormattedValue);
                 var record = _items.First(x => x.ID == recordID);
 
@@ -89,7 +92,6 @@ namespace EnterpriseGames.UI.Forms
             }
             else if (dtgOrders.Rows.Count == 0)
             {
-                btnRemove.Enabled = false;
                 btnEdit.Enabled = false;
                 dtgItems.Rows.Clear();
             }
@@ -108,12 +110,12 @@ namespace EnterpriseGames.UI.Forms
             if (Settings.CurrentUser.UserType == UserType.Employee)
             {
                 btnEdit.Enabled = false;
-                btnRemove.Enabled = false;
                 btnShowEmployees.Enabled = false;
                 btnShowOrders.Enabled = false;
             }
 
             UpdateOrdersDtg();
+            UpdateCounter();
         }
 
         private void metroToggle1_CheckedChanged(object sender, EventArgs e)
@@ -149,7 +151,7 @@ namespace EnterpriseGames.UI.Forms
 
         private void btnShowOrders_Click(object sender, EventArgs e)
         {
-
+            new OrdersForm().ShowDialog();
         }
 
         private void btnShowHelp_Click(object sender, EventArgs e)
@@ -174,6 +176,11 @@ namespace EnterpriseGames.UI.Forms
             _timer?.Dispose();
         }
 
+        private void UpdateCounter()
+        {
+            lblCount.Text = dtgOrders.Rows.Count.ToString();
+        }
+
         private void brnAdd_Click(object sender, EventArgs e)
         {
             var record = new Record();
@@ -188,6 +195,7 @@ namespace EnterpriseGames.UI.Forms
 
                 MetroMessageBox.Show(this, "Заказ успешно добавлен", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateOrdersDtg();
+                UpdateCounter();
             }
         }
 

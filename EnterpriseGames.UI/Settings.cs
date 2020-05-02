@@ -16,8 +16,6 @@ namespace EnterpriseGames.UI
             Context = new EnterpriseContext(new DbContextOptionsBuilder<EnterpriseContext>()
                 .UseSqlite("Filename=desktop_games.db")
                 .UseLazyLoadingProxies().EnableSensitiveDataLogging().Options);
-
-            CurrentUser = new User() { ID = 1, UserType = UserType.Employee };
         }
 
         internal static ListViewItem MapToItem(this Genre genre)

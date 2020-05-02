@@ -241,21 +241,22 @@
             this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCount.AutoSize = true;
             this.lblCount.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.lblCount.Location = new System.Drawing.Point(126, 657);
+            this.lblCount.Location = new System.Drawing.Point(127, 663);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(0, 0);
+            this.lblCount.Size = new System.Drawing.Size(21, 25);
             this.lblCount.TabIndex = 8;
+            this.lblCount.Text = "0";
             // 
             // metroLabel1
             // 
             this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(23, 657);
+            this.metroLabel1.Location = new System.Drawing.Point(23, 663);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(120, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(111, 25);
             this.metroLabel1.TabIndex = 7;
-            this.metroLabel1.Text = "Количество: 0";
+            this.metroLabel1.Text = "Количество: ";
             // 
             // dtgPrices
             // 
@@ -381,6 +382,7 @@
             this.txtFilter.MaxLength = 32767;
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.PasswordChar = '\0';
+            this.txtFilter.PromptText = "Фильтр поиска";
             this.txtFilter.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtFilter.SelectedText = "";
             this.txtFilter.SelectionLength = 0;

@@ -46,7 +46,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
             switch ((UserType)_employee.UserType)
             {
                 case UserType.Admin: rbAdmin.Checked = true; break;
-                case UserType.Employee: rbAdmin.Checked = true; break;
+                case UserType.Employee: rbUser.Checked = true; break;
                 default: break;
             }
         }

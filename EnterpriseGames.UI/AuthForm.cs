@@ -36,7 +36,13 @@ namespace EnterpriseGames.UI
                 if (_authService.LogIn(txtLogin.Text.Trim(), Helpers.CreateHash(txtLogin.Text.Trim()), out User user))
                 {
                     Settings.CurrentUser = user;
-                    // Show View
+                    this.Visible = false;
+
+                    txtLogin.Text = string.Empty;
+                    txtPassword.Text = string.Empty;
+
+                    new MainForm().ShowDialog();
+                    this.Visible = true;
                 }
                 else
                 {

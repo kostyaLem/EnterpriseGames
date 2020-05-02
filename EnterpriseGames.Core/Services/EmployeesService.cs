@@ -21,6 +21,11 @@ namespace EnterpriseGames.Core.Services
             return default;
         }
 
+        public Record[] GetAllOrders()
+        {
+            return _context.Order.Select(x => x.OrderToRecord()).ToArray();
+        }
+
         public void AddOrder(long empID, Record record)
         {
             var empl = Find(empID);
