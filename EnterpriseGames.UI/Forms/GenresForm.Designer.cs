@@ -65,6 +65,7 @@
             this.txtFilter.MaxLength = 32767;
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.PasswordChar = '\0';
+            this.txtFilter.PromptText = "Фильтр поиска";
             this.txtFilter.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtFilter.SelectedText = "";
             this.txtFilter.SelectionLength = 0;
@@ -102,6 +103,7 @@
             this.txtName.MaxLength = 32767;
             this.txtName.Name = "txtName";
             this.txtName.PasswordChar = '\0';
+            this.txtName.PromptText = "Название";
             this.txtName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtName.SelectedText = "";
             this.txtName.SelectionLength = 0;
@@ -223,6 +225,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(790, 485);
             this.Name = "GenresForm";
+            this.Resizable = false;
             this.Text = "Жанры игр";
             this.Load += new System.EventHandler(this.GenresForm_Load);
             this.flpEditing.ResumeLayout(false);

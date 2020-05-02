@@ -25,6 +25,10 @@ namespace EnterpriseGames.UI.Forms
             {
                 flpEditing.Enabled = true;
             }
+            else
+            {
+                flpEditing.Enabled = false;
+            }
 
             var items = _genresService.GetAll();
 

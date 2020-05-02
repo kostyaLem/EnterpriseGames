@@ -17,7 +17,7 @@ namespace EnterpriseGames.UI.Forms
 
         private readonly EmployeesService _empService = new EmployeesService(Settings.Context);
 
-        private readonly User _currentUser;
+        private readonly User _user;
         private Record[] _items;
 
         private System.Timers.Timer _timer;
@@ -28,7 +28,7 @@ namespace EnterpriseGames.UI.Forms
 
             Application.ApplicationExit += Application_ApplicationExit;
 
-            _currentUser = Settings.CurrentUser;
+            _user = Settings.CurrentUser;
         }
 
         private void tglShowMenu_CheckedChanged(object sender, System.EventArgs e)
@@ -54,14 +54,15 @@ namespace EnterpriseGames.UI.Forms
 
         private void UpdateOrdersDtg()
         {
-            _items = _empService.GetOrders(_currentUser.ID);
+            dtgOrders.Rows.Clear();
+            _items = _empService.GetOrders(_user.ID);
 
             if (_items != null)
             {
                 foreach (var order in _items)
                 {
                     dtgOrders.Rows.Add(order.ID, order.EmployeeFullName, order.CustomerFullName,
-                                       order.Items.Count, order.DateCreated, order.DateClosed,
+                                       order.Items.Count, order.DateCreated, order.DateClosed, order.Items.Sum(x => x.Price).ToString("N2") + " р.",
                                        order.State == RecordState.Editing ? ORDER_EDITING : ORDER_CLOSED);
                 }
             }
@@ -73,16 +74,23 @@ namespace EnterpriseGames.UI.Forms
             {
                 dtgItems.Rows.Clear();
 
+                if (_user.UserType == UserType.Admin)
+                    btnRemove.Enabled = true;
+
                 var recordID = Convert.ToInt32(dtgOrders.SelectedRows[0].Cells[0].FormattedValue);
                 var record = _items.First(x => x.ID == recordID);
 
+                btnEdit.Enabled = record.State != RecordState.Closed ? true : false;
+
                 foreach (var item in record.Items)
                 {
-                    dtgItems.Rows.Add(item.ID, item.Name, item.Price);
+                    dtgItems.Rows.Add(item.ID, item.Name, item.Price.ToString("N2") + " р.");
                 }
             }
             else if (dtgOrders.Rows.Count == 0)
             {
+                btnRemove.Enabled = false;
+                btnEdit.Enabled = false;
                 dtgItems.Rows.Clear();
             }
         }
@@ -94,11 +102,13 @@ namespace EnterpriseGames.UI.Forms
             _timer.Interval = 1_000;
             _timer.Start();
 
-            lblEmployee.Text = _currentUser.UserType == UserType.Admin ? "Администратор: " : "Сотрудник: ";
-            lblEmployee.Text += string.Join(" ", _currentUser.Surname, _currentUser.Name, _currentUser.Patronymic);
+            lblEmployee.Text = _user.UserType == UserType.Admin ? "Администратор: " : "Сотрудник: ";
+            lblEmployee.Text += string.Join(" ", _user.Surname, _user.Name, _user.Patronymic);
 
             if (Settings.CurrentUser.UserType == UserType.Employee)
             {
+                btnEdit.Enabled = false;
+                btnRemove.Enabled = false;
                 btnShowEmployees.Enabled = false;
                 btnShowOrders.Enabled = false;
             }
@@ -167,15 +177,43 @@ namespace EnterpriseGames.UI.Forms
         private void brnAdd_Click(object sender, EventArgs e)
         {
             var record = new Record();
-            
+
             var result = new EditOrderForm(record).ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                record.EmployeeID = _currentUser.ID;
+                record.EmployeeID = _user.ID;
 
-                _empService.SetOrder(_currentUser.ID, record);
+                _empService.AddOrder(_user.ID, record);
+
+                MetroMessageBox.Show(this, "Заказ успешно добавлен", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateOrdersDtg();
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            var record = _items.FirstOrDefault(x => x.ID == Convert.ToInt32(dtgOrders.SelectedRows[0].Cells[0].FormattedValue));
+
+            if (record != null)
+            {
+                var result = new EditOrderForm(record).ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    record.EmployeeID = _user.ID;
+
+                    _empService.Update(_user.ID, record);
+
+                    MetroMessageBox.Show(this, "Заказ успешно изменен", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    UpdateOrdersDtg();
+                }
+            }
+        }
+
+        private void btnShowCustomers_Click(object sender, EventArgs e)
+        {
+            new CustomersForm().ShowDialog();
         }
     }
 }

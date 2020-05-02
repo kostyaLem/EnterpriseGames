@@ -250,10 +250,11 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.dataGrid);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(830, 460);
             this.Name = "EmployeesForm";
             this.Resizable = false;
-            this.Text = "Работники";
+            this.Text = "Сотрудники";
             this.Load += new System.EventHandler(this.EmployeesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);

@@ -44,6 +44,7 @@
             this.btnShowGames = new MetroFramework.Controls.MetroButton();
             this.btnShowGenres = new MetroFramework.Controls.MetroButton();
             this.btnShowEmployees = new MetroFramework.Controls.MetroButton();
+            this.btnShowCustomers = new MetroFramework.Controls.MetroButton();
             this.btnShowOrders = new MetroFramework.Controls.MetroButton();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnShowHelp = new MetroFramework.Controls.MetroButton();
@@ -58,6 +59,7 @@
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderItemsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateClosed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpItems = new System.Windows.Forms.TableLayoutPanel();
@@ -71,7 +73,7 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.brnAdd = new MetroFramework.Controls.MetroButton();
+            this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.btnEdit = new MetroFramework.Controls.MetroButton();
             this.btnRemove = new MetroFramework.Controls.MetroButton();
             this.flowLayoutPanel1.SuspendLayout();
@@ -132,12 +134,13 @@
             this.flowLayoutPanel1.Controls.Add(this.btnShowGames);
             this.flowLayoutPanel1.Controls.Add(this.btnShowGenres);
             this.flowLayoutPanel1.Controls.Add(this.btnShowEmployees);
+            this.flowLayoutPanel1.Controls.Add(this.btnShowCustomers);
             this.flowLayoutPanel1.Controls.Add(this.btnShowOrders);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(127, 186);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(127, 232);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // btnShowGames
@@ -173,10 +176,21 @@
             this.btnShowEmployees.UseSelectable = true;
             this.btnShowEmployees.Click += new System.EventHandler(this.btnShowEmployees_Click);
             // 
+            // btnShowCustomers
+            // 
+            this.btnShowCustomers.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnShowCustomers.Location = new System.Drawing.Point(3, 141);
+            this.btnShowCustomers.Name = "btnShowCustomers";
+            this.btnShowCustomers.Size = new System.Drawing.Size(119, 40);
+            this.btnShowCustomers.TabIndex = 12;
+            this.btnShowCustomers.Text = "Покупатели";
+            this.btnShowCustomers.UseSelectable = true;
+            this.btnShowCustomers.Click += new System.EventHandler(this.btnShowCustomers_Click);
+            // 
             // btnShowOrders
             // 
             this.btnShowOrders.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnShowOrders.Location = new System.Drawing.Point(3, 141);
+            this.btnShowOrders.Location = new System.Drawing.Point(3, 187);
             this.btnShowOrders.Name = "btnShowOrders";
             this.btnShowOrders.Size = new System.Drawing.Size(119, 40);
             this.btnShowOrders.TabIndex = 11;
@@ -192,7 +206,7 @@
             this.flowLayoutPanel2.Controls.Add(this.btnShowHelp);
             this.flowLayoutPanel2.Controls.Add(this.btnChangeUser);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 212);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 258);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(127, 94);
@@ -227,7 +241,7 @@
             this.flowLayoutPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel3.Controls.Add(this.btnExit);
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 329);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 375);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(127, 48);
             this.flowLayoutPanel3.TabIndex = 13;
@@ -254,7 +268,7 @@
             this.flpShowsMenu.Location = new System.Drawing.Point(3, 3);
             this.flpShowsMenu.Name = "flpShowsMenu";
             this.tlpMain.SetRowSpan(this.flpShowsMenu, 2);
-            this.flpShowsMenu.Size = new System.Drawing.Size(133, 380);
+            this.flpShowsMenu.Size = new System.Drawing.Size(133, 426);
             this.flpShowsMenu.TabIndex = 2;
             // 
             // tlpMain
@@ -273,7 +287,7 @@
             this.tlpMain.RowCount = 2;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.Size = new System.Drawing.Size(1201, 388);
+            this.tlpMain.Size = new System.Drawing.Size(1201, 433);
             this.tlpMain.TabIndex = 3;
             // 
             // dtgOrders
@@ -299,6 +313,7 @@
             this.Customer,
             this.OrderItemsCount,
             this.OrderDate,
+            this.DateClosed,
             this.OrderPrice,
             this.OrderState});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -315,6 +330,7 @@
             this.dtgOrders.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtgOrders.Location = new System.Drawing.Point(169, 3);
             this.dtgOrders.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.dtgOrders.MultiSelect = false;
             this.dtgOrders.Name = "dtgOrders";
             this.dtgOrders.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -331,7 +347,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
             this.dtgOrders.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgOrders.Size = new System.Drawing.Size(1029, 197);
+            this.dtgOrders.Size = new System.Drawing.Size(1029, 242);
             this.dtgOrders.TabIndex = 3;
             this.dtgOrders.SelectionChanged += new System.EventHandler(this.dtgOrders_SelectionChanged);
             // 
@@ -366,9 +382,16 @@
             // 
             // OrderDate
             // 
-            this.OrderDate.HeaderText = "Дата";
+            this.OrderDate.HeaderText = "Дата создания";
             this.OrderDate.Name = "OrderDate";
             this.OrderDate.ReadOnly = true;
+            // 
+            // DateClosed
+            // 
+            this.DateClosed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DateClosed.HeaderText = "Дата закрытия";
+            this.DateClosed.Name = "DateClosed";
+            this.DateClosed.ReadOnly = true;
             // 
             // OrderPrice
             // 
@@ -391,7 +414,7 @@
             this.tlpItems.Controls.Add(this.lblPositions, 0, 0);
             this.tlpItems.Controls.Add(this.dtgItems, 0, 1);
             this.tlpItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpItems.Location = new System.Drawing.Point(142, 206);
+            this.tlpItems.Location = new System.Drawing.Point(142, 251);
             this.tlpItems.Name = "tlpItems";
             this.tlpItems.RowCount = 2;
             this.tlpItems.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -446,6 +469,7 @@
             this.dtgItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtgItems.Location = new System.Drawing.Point(30, 28);
             this.dtgItems.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.dtgItems.MultiSelect = false;
             this.dtgItems.Name = "dtgItems";
             this.dtgItems.ReadOnly = true;
             this.dtgItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -504,7 +528,7 @@
             this.lblCurrentTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCurrentTime.AutoSize = true;
             this.lblCurrentTime.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.lblCurrentTime.Location = new System.Drawing.Point(20, 547);
+            this.lblCurrentTime.Location = new System.Drawing.Point(20, 592);
             this.lblCurrentTime.Name = "lblCurrentTime";
             this.lblCurrentTime.Size = new System.Drawing.Size(135, 25);
             this.lblCurrentTime.TabIndex = 5;
@@ -545,27 +569,27 @@
             this.flowLayoutPanel4.AutoSize = true;
             this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel4.Controls.Add(this.brnAdd);
+            this.flowLayoutPanel4.Controls.Add(this.btnAdd);
             this.flowLayoutPanel4.Controls.Add(this.btnEdit);
             this.flowLayoutPanel4.Controls.Add(this.btnRemove);
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(841, 524);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(841, 569);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(377, 48);
             this.flowLayoutPanel4.TabIndex = 8;
             // 
-            // brnAdd
+            // btnAdd
             // 
-            this.brnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.brnAdd.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.brnAdd.Location = new System.Drawing.Point(253, 3);
-            this.brnAdd.Name = "brnAdd";
-            this.brnAdd.Size = new System.Drawing.Size(119, 40);
-            this.brnAdd.TabIndex = 8;
-            this.brnAdd.Text = "Добавить";
-            this.brnAdd.UseSelectable = true;
-            this.brnAdd.Click += new System.EventHandler(this.brnAdd_Click);
+            this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnAdd.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnAdd.Location = new System.Drawing.Point(253, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(119, 40);
+            this.btnAdd.TabIndex = 8;
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.UseSelectable = true;
+            this.btnAdd.Click += new System.EventHandler(this.brnAdd_Click);
             // 
             // btnEdit
             // 
@@ -577,6 +601,7 @@
             this.btnEdit.TabIndex = 9;
             this.btnEdit.Text = "Редактировать";
             this.btnEdit.UseSelectable = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnRemove
             // 
@@ -593,7 +618,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1241, 592);
+            this.ClientSize = new System.Drawing.Size(1241, 637);
             this.Controls.Add(this.flowLayoutPanel4);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroToggle1);
@@ -651,18 +676,20 @@
         private MetroFramework.Controls.MetroLabel lblPositions;
         private MetroFramework.Controls.MetroGrid dtgItems;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private MetroFramework.Controls.MetroButton brnAdd;
+        private MetroFramework.Controls.MetroButton btnAdd;
         private MetroFramework.Controls.MetroButton btnEdit;
         private MetroFramework.Controls.MetroButton btnRemove;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn OderID;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderEmployee;
         private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderItemsCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateClosed;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderState;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PriceDate;
+        private MetroFramework.Controls.MetroButton btnShowCustomers;
     }
 }

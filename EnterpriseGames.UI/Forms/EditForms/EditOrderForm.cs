@@ -1,13 +1,10 @@
-﻿using EnterpriseGames.Core.Models;
-using EnterpriseGames.Core.Other;
+﻿using EnterpriseGames.Core.Other;
 using EnterpriseGames.Core.Services;
 using MetroFramework;
 using MetroFramework.Forms;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace EnterpriseGames.UI.Forms.EditForms
@@ -44,9 +41,17 @@ namespace EnterpriseGames.UI.Forms.EditForms
             cbStatus.Items.AddRange(new Status[] {
                                         new Status() { State = RecordState.Editing },
                                         new Status() { State = RecordState.Closed } });
-            cbStatus.SelectedItem = new Status() { State = _record.State };
+
+            cbStatus.SelectedIndex = _record.State == RecordState.Editing ? 0 : 1;
 
             cbClients.Items.AddRange(_customersService.GetCustomers());
+
+            foreach(var item in  cbClients.Items)
+                if ((item as CustomerDto).ID == _record.CustomerID)
+                {
+                    cbClients.SelectedItem = item;
+                    break;
+                }      
 
             var games = _productsService.GetAll(x => x.ProductPriceHistory.Any(z => z.IsDeleted == 0));
             games.ToList().ForEach(pr =>
@@ -55,11 +60,31 @@ namespace EnterpriseGames.UI.Forms.EditForms
                         pr.Id,
                         pr.Title,
                         pr.ProductDateCreated,
-                        pr.ProductPriceHistory.LastOrDefault(x => x.IsDeleted == 0).Price
+                        pr.ProductPriceHistory.LastOrDefault(x => x.IsDeleted == 0).Price.ToString("N2") + " р."
                     );
 
                 dtgGames.Rows[dtgGames.RowCount - 1].Tag = pr.ProductPriceHistory.LastOrDefault(x => x.IsDeleted == 0).Id;
             });
+
+            foreach (var game in games)
+            {
+                foreach (var prHistory in game.ProductPriceHistory)
+                {
+                    if (_record.Items.Exists(x => x.ProductID == prHistory.Id))
+                    {
+                        dtgBasket.Rows.Add(
+                            prHistory.Id,
+                            prHistory.Product.Title,
+                            prHistory.Product.ProductDateCreated,
+                            prHistory.Price
+                            );
+
+                        dtgBasket.Rows[dtgBasket.RowCount - 1].Tag = prHistory.Id;
+
+                        break;
+                    }
+                }
+            }
 
             if (!string.IsNullOrEmpty(_record.DateCreated))
             {
@@ -80,7 +105,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
             double sum = 0;
             foreach (DataGridViewRow row in dtgBasket.Rows)
             {
-                sum += double.Parse(row.Cells[3].FormattedValue.ToString());
+                sum += double.Parse(row.Cells[3].FormattedValue.ToString().Replace("р.", ""));
             }
 
             lblSum.Text = $"ИТОГ: {Math.Round(sum, 2):N2} р.";
@@ -153,6 +178,9 @@ namespace EnterpriseGames.UI.Forms.EditForms
             if (cbStatus.SelectedIndex == -1)
             { MetroMessageBox.Show(this, "Выберите статус заказа", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
+            if (cbClients.SelectedIndex == -1)
+            { MetroMessageBox.Show(this, "Выберите покупателя", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+
             if (dtgBasket.Rows.Count == 0)
             { MetroMessageBox.Show(this, "Добавьте предметы в корзину", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
@@ -166,6 +194,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
 
             _record.State = (cbStatus.SelectedItem as Status).State;
 
+            _record.Items.Clear();
             foreach (DataGridViewRow row in dtgBasket.Rows)
             {
                 _record.Items.Add(new Item()

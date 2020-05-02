@@ -116,7 +116,7 @@ namespace EnterpriseGames.UI.Forms
                 if (dialogResult == DialogResult.OK)
                 {
                     _prService.Update(product);
-                    MetroMessageBox.Show(this, $"Пользователь {product.Title} изменен", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MetroMessageBox.Show(this, $"Игра {product.Title} изменена", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateDataGrid();
                     UpdateCounter();
                 }
