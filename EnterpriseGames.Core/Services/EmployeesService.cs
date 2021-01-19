@@ -32,7 +32,6 @@ namespace EnterpriseGames.Core.Services
 
             var order = new Order()
             {
-                Id = record.ID,
                 DateClosed = record.DateClosed,
                 DateCreated = record.DateCreated,
                 OrderState = (int)record.State,

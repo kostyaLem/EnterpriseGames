@@ -30,7 +30,6 @@
         {
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
-            this.txtPhone = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.btnSubmit = new MetroFramework.Controls.MetroButton();
             this.btnCancel = new MetroFramework.Controls.MetroButton();
@@ -47,6 +46,7 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.txtAdditional = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // metroLabel13
@@ -68,37 +68,6 @@
             this.metroLabel12.Size = new System.Drawing.Size(19, 25);
             this.metroLabel12.TabIndex = 48;
             this.metroLabel12.Text = "*";
-            // 
-            // txtPhone
-            // 
-            // 
-            // 
-            // 
-            this.txtPhone.CustomButton.Image = null;
-            this.txtPhone.CustomButton.Location = new System.Drawing.Point(176, 1);
-            this.txtPhone.CustomButton.Name = "";
-            this.txtPhone.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPhone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPhone.CustomButton.TabIndex = 1;
-            this.txtPhone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPhone.CustomButton.UseSelectable = true;
-            this.txtPhone.CustomButton.Visible = false;
-            this.txtPhone.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtPhone.Lines = new string[0];
-            this.txtPhone.Location = new System.Drawing.Point(515, 91);
-            this.txtPhone.MaxLength = 32767;
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.PasswordChar = '\0';
-            this.txtPhone.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPhone.SelectedText = "";
-            this.txtPhone.SelectionLength = 0;
-            this.txtPhone.SelectionStart = 0;
-            this.txtPhone.ShortcutsEnabled = true;
-            this.txtPhone.Size = new System.Drawing.Size(198, 23);
-            this.txtPhone.TabIndex = 47;
-            this.txtPhone.UseSelectable = true;
-            this.txtPhone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPhone.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel9
             // 
@@ -153,7 +122,7 @@
             this.txtEmail.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtEmail.Lines = new string[0];
             this.txtEmail.Location = new System.Drawing.Point(515, 155);
-            this.txtEmail.MaxLength = 32767;
+            this.txtEmail.MaxLength = 60;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -192,7 +161,7 @@
             this.txtPatr.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtPatr.Lines = new string[0];
             this.txtPatr.Location = new System.Drawing.Point(143, 152);
-            this.txtPatr.MaxLength = 32767;
+            this.txtPatr.MaxLength = 60;
             this.txtPatr.Name = "txtPatr";
             this.txtPatr.PasswordChar = '\0';
             this.txtPatr.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -223,7 +192,7 @@
             this.txtName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtName.Lines = new string[0];
             this.txtName.Location = new System.Drawing.Point(143, 123);
-            this.txtName.MaxLength = 32767;
+            this.txtName.MaxLength = 60;
             this.txtName.Name = "txtName";
             this.txtName.PasswordChar = '\0';
             this.txtName.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -254,7 +223,7 @@
             this.txtSurname.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSurname.Lines = new string[0];
             this.txtSurname.Location = new System.Drawing.Point(143, 94);
-            this.txtSurname.MaxLength = 32767;
+            this.txtSurname.MaxLength = 60;
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.PasswordChar = '\0';
             this.txtSurname.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -345,7 +314,7 @@
             this.txtAdditional.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtAdditional.Lines = new string[0];
             this.txtAdditional.Location = new System.Drawing.Point(32, 216);
-            this.txtAdditional.MaxLength = 32767;
+            this.txtAdditional.MaxLength = 256;
             this.txtAdditional.Multiline = true;
             this.txtAdditional.Name = "txtAdditional";
             this.txtAdditional.PasswordChar = '\0';
@@ -370,17 +339,25 @@
             this.metroLabel7.TabIndex = 52;
             this.metroLabel7.Text = "*";
             // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(515, 88);
+            this.txtPhone.Mask = "+7 (999) 000-00-00";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(198, 20);
+            this.txtPhone.TabIndex = 53;
+            // 
             // EditCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 396);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.txtAdditional);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.metroLabel13);
             this.Controls.Add(this.metroLabel12);
-            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnCancel);
@@ -406,7 +383,6 @@
         #endregion
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel12;
-        private MetroFramework.Controls.MetroTextBox txtPhone;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroButton btnSubmit;
         private MetroFramework.Controls.MetroButton btnCancel;
@@ -423,5 +399,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox txtAdditional;
         private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
     }
 }

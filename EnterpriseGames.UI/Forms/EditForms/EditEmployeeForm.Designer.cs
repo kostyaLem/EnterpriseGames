@@ -52,7 +52,6 @@
             this.txtLogin = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.txtPhone = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
@@ -61,6 +60,7 @@
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,7 +163,7 @@
             this.txtSurname.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSurname.Lines = new string[0];
             this.txtSurname.Location = new System.Drawing.Point(490, 168);
-            this.txtSurname.MaxLength = 32767;
+            this.txtSurname.MaxLength = 60;
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.PasswordChar = '\0';
             this.txtSurname.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -194,7 +194,7 @@
             this.txtName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtName.Lines = new string[0];
             this.txtName.Location = new System.Drawing.Point(490, 197);
-            this.txtName.MaxLength = 32767;
+            this.txtName.MaxLength = 60;
             this.txtName.Name = "txtName";
             this.txtName.PasswordChar = '\0';
             this.txtName.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -225,7 +225,7 @@
             this.txtPatr.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtPatr.Lines = new string[0];
             this.txtPatr.Location = new System.Drawing.Point(490, 226);
-            this.txtPatr.MaxLength = 32767;
+            this.txtPatr.MaxLength = 60;
             this.txtPatr.Name = "txtPatr";
             this.txtPatr.PasswordChar = '\0';
             this.txtPatr.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -264,7 +264,7 @@
             this.txtEmail.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtEmail.Lines = new string[0];
             this.txtEmail.Location = new System.Drawing.Point(490, 350);
-            this.txtEmail.MaxLength = 32767;
+            this.txtEmail.MaxLength = 60;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -359,7 +359,7 @@
             this.txtPassword.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtPassword.Lines = new string[0];
             this.txtPassword.Location = new System.Drawing.Point(490, 106);
-            this.txtPassword.MaxLength = 32767;
+            this.txtPassword.MaxLength = 60;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -390,7 +390,7 @@
             this.txtLogin.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtLogin.Lines = new string[0];
             this.txtLogin.Location = new System.Drawing.Point(490, 77);
-            this.txtLogin.MaxLength = 32767;
+            this.txtLogin.MaxLength = 60;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.PasswordChar = '\0';
             this.txtLogin.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -423,37 +423,6 @@
             this.metroLabel8.Size = new System.Drawing.Size(60, 25);
             this.metroLabel8.TabIndex = 20;
             this.metroLabel8.Text = "Логин";
-            // 
-            // txtPhone
-            // 
-            // 
-            // 
-            // 
-            this.txtPhone.CustomButton.Image = null;
-            this.txtPhone.CustomButton.Location = new System.Drawing.Point(176, 1);
-            this.txtPhone.CustomButton.Name = "";
-            this.txtPhone.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPhone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPhone.CustomButton.TabIndex = 1;
-            this.txtPhone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPhone.CustomButton.UseSelectable = true;
-            this.txtPhone.CustomButton.Visible = false;
-            this.txtPhone.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtPhone.Lines = new string[0];
-            this.txtPhone.Location = new System.Drawing.Point(490, 286);
-            this.txtPhone.MaxLength = 32767;
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.PasswordChar = '\0';
-            this.txtPhone.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPhone.SelectedText = "";
-            this.txtPhone.SelectionLength = 0;
-            this.txtPhone.SelectionStart = 0;
-            this.txtPhone.ShortcutsEnabled = true;
-            this.txtPhone.Size = new System.Drawing.Size(198, 23);
-            this.txtPhone.TabIndex = 23;
-            this.txtPhone.UseSelectable = true;
-            this.txtPhone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPhone.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel9
             // 
@@ -535,11 +504,20 @@
             this.metroLabel16.TabIndex = 30;
             this.metroLabel16.Text = "*";
             // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(490, 286);
+            this.txtPhone.Mask = "+7 (999) 000-00-00";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(198, 20);
+            this.txtPhone.TabIndex = 54;
+            // 
             // EditEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 539);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.metroLabel16);
             this.Controls.Add(this.metroLabel15);
             this.Controls.Add(this.metroLabel14);
@@ -547,7 +525,6 @@
             this.Controls.Add(this.metroLabel12);
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroLabel10);
-            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.metroLabel8);
@@ -608,7 +585,6 @@
         private MetroFramework.Controls.MetroTextBox txtLogin;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroTextBox txtPhone;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel11;
@@ -617,5 +593,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroLabel metroLabel16;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
     }
 }

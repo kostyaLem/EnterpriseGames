@@ -104,7 +104,7 @@
             this.txtTitle.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtTitle.Lines = new string[0];
             this.txtTitle.Location = new System.Drawing.Point(324, 93);
-            this.txtTitle.MaxLength = 32767;
+            this.txtTitle.MaxLength = 60;
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.PasswordChar = '\0';
             this.txtTitle.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -145,7 +145,7 @@
             this.txtDesc.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtDesc.Lines = new string[0];
             this.txtDesc.Location = new System.Drawing.Point(324, 157);
-            this.txtDesc.MaxLength = 32767;
+            this.txtDesc.MaxLength = 256;
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.PasswordChar = '\0';
@@ -386,6 +386,7 @@
             this.txtNewPrice.MaxLength = 32767;
             this.txtNewPrice.Name = "txtNewPrice";
             this.txtNewPrice.PasswordChar = '\0';
+            this.txtNewPrice.PromptText = "Новая цена";
             this.txtNewPrice.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtNewPrice.SelectedText = "";
             this.txtNewPrice.SelectionLength = 0;
@@ -404,9 +405,9 @@
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel7.Location = new System.Drawing.Point(23, 366);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(101, 25);
+            this.metroLabel7.Size = new System.Drawing.Size(97, 25);
             this.metroLabel7.TabIndex = 46;
-            this.metroLabel7.Text = "Все жанры:";
+            this.metroLabel7.Text = "Все игры:";
             // 
             // metroLabel8
             // 
@@ -414,9 +415,9 @@
             this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel8.Location = new System.Drawing.Point(447, 366);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(183, 25);
+            this.metroLabel8.Size = new System.Drawing.Size(179, 25);
             this.metroLabel8.TabIndex = 47;
-            this.metroLabel8.Text = "Добавленные жанры:";
+            this.metroLabel8.Text = "Добавленные игры:";
             // 
             // btnAddNewGenre
             // 

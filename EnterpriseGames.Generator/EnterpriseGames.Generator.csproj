@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -15,12 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EnterpriseGames.Core\EnterpriseGames.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="desktop_games.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

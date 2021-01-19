@@ -3,6 +3,7 @@ using EnterpriseGames.UI.Utility;
 using MetroFramework;
 using MetroFramework.Forms;
 using System;
+using System.Net.Mail;
 using System.Windows.Forms;
 
 namespace EnterpriseGames.UI.Forms.EditForms
@@ -39,6 +40,17 @@ namespace EnterpriseGames.UI.Forms.EditForms
             {
                 MetroMessageBox.Show(this, "Заполните обязательные поля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.None;
+                return;
+            }
+
+            try
+            {
+                if (!string.IsNullOrEmpty(txtEmail.Text))
+                    new MailAddress(txtEmail.Text);
+            }
+            catch 
+            {
+                MetroMessageBox.Show(this, "Неверно указана почта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

@@ -41,14 +41,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGrid = new MetroFramework.Controls.MetroGrid();
-            this.RowId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TitleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductDateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsExist = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flpEditing = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnRemove = new MetroFramework.Controls.MetroButton();
             this.btnEdit = new MetroFramework.Controls.MetroButton();
             this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.lblCount = new MetroFramework.Controls.MetroLabel();
@@ -68,6 +61,12 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.txtDesc = new MetroFramework.Controls.MetroTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.RowId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TitleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductDateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsExist = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.flpEditing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPrices)).BeginInit();
@@ -137,77 +136,19 @@
             this.dataGrid.TabIndex = 1;
             this.dataGrid.SelectionChanged += new System.EventHandler(this.dataGrid_SelectionChanged);
             // 
-            // RowId
-            // 
-            this.RowId.DividerWidth = 1;
-            this.RowId.Frozen = true;
-            this.RowId.HeaderText = "#";
-            this.RowId.Name = "RowId";
-            this.RowId.ReadOnly = true;
-            this.RowId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.RowId.Width = 20;
-            // 
-            // TitleId
-            // 
-            this.TitleId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TitleId.HeaderText = "Название";
-            this.TitleId.Name = "TitleId";
-            this.TitleId.ReadOnly = true;
-            // 
-            // DateCreated
-            // 
-            this.DateCreated.HeaderText = "Дата создания";
-            this.DateCreated.Name = "DateCreated";
-            this.DateCreated.ReadOnly = true;
-            // 
-            // ProductDateCreated
-            // 
-            this.ProductDateCreated.HeaderText = "Появилась";
-            this.ProductDateCreated.Name = "ProductDateCreated";
-            this.ProductDateCreated.ReadOnly = true;
-            // 
-            // LastPrice
-            // 
-            this.LastPrice.HeaderText = "Последняя цена";
-            this.LastPrice.Name = "LastPrice";
-            this.LastPrice.ReadOnly = true;
-            // 
-            // IsExist
-            // 
-            this.IsExist.HeaderText = "В наличии";
-            this.IsExist.Name = "IsExist";
-            this.IsExist.ReadOnly = true;
-            this.IsExist.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsExist.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // flpEditing
             // 
             this.flpEditing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.flpEditing.AutoSize = true;
             this.flpEditing.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpEditing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpEditing.Controls.Add(this.btnRemove);
             this.flpEditing.Controls.Add(this.btnEdit);
             this.flpEditing.Controls.Add(this.btnAdd);
             this.flpEditing.Enabled = false;
-            this.flpEditing.Location = new System.Drawing.Point(653, 649);
+            this.flpEditing.Location = new System.Drawing.Point(827, 649);
             this.flpEditing.Name = "flpEditing";
-            this.flpEditing.Size = new System.Drawing.Size(524, 43);
+            this.flpEditing.Size = new System.Drawing.Size(350, 43);
             this.flpEditing.TabIndex = 9;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemove.Enabled = false;
-            this.btnRemove.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.btnRemove.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnRemove.Location = new System.Drawing.Point(3, 3);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(168, 35);
-            this.btnRemove.TabIndex = 1;
-            this.btnRemove.Text = "Удалить";
-            this.btnRemove.UseSelectable = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnEdit
             // 
@@ -215,7 +156,7 @@
             this.btnEdit.Enabled = false;
             this.btnEdit.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnEdit.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnEdit.Location = new System.Drawing.Point(177, 3);
+            this.btnEdit.Location = new System.Drawing.Point(3, 3);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(168, 35);
             this.btnEdit.TabIndex = 2;
@@ -228,7 +169,7 @@
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnAdd.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnAdd.Location = new System.Drawing.Point(351, 3);
+            this.btnAdd.Location = new System.Drawing.Point(177, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(168, 35);
             this.btnAdd.TabIndex = 3;
@@ -402,9 +343,9 @@
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel3.Location = new System.Drawing.Point(382, 0);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(115, 25);
+            this.metroLabel3.Size = new System.Drawing.Size(99, 25);
             this.metroLabel3.TabIndex = 15;
-            this.metroLabel3.Text = "Жанры игры:";
+            this.metroLabel3.Text = "Тип услуги:";
             // 
             // dtgGenres
             // 
@@ -485,9 +426,9 @@
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel4.Location = new System.Drawing.Point(810, 68);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(168, 25);
+            this.metroLabel4.Size = new System.Drawing.Size(179, 25);
             this.metroLabel4.TabIndex = 16;
-            this.metroLabel4.Text = "Изображение игры:";
+            this.metroLabel4.Text = "Изображение услуги:";
             // 
             // metroLabel5
             // 
@@ -496,9 +437,9 @@
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel5.Location = new System.Drawing.Point(810, 335);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(139, 25);
+            this.metroLabel5.Size = new System.Drawing.Size(96, 25);
             this.metroLabel5.TabIndex = 17;
-            this.metroLabel5.Text = "Описание игры:";
+            this.metroLabel5.Text = "Описание:";
             // 
             // txtDesc
             // 
@@ -553,6 +494,49 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(759, 179);
             this.tableLayoutPanel1.TabIndex = 19;
             // 
+            // RowId
+            // 
+            this.RowId.DividerWidth = 1;
+            this.RowId.Frozen = true;
+            this.RowId.HeaderText = "#";
+            this.RowId.Name = "RowId";
+            this.RowId.ReadOnly = true;
+            this.RowId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.RowId.Width = 20;
+            // 
+            // TitleId
+            // 
+            this.TitleId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TitleId.HeaderText = "Название";
+            this.TitleId.Name = "TitleId";
+            this.TitleId.ReadOnly = true;
+            // 
+            // DateCreated
+            // 
+            this.DateCreated.HeaderText = "Дата создания";
+            this.DateCreated.Name = "DateCreated";
+            this.DateCreated.ReadOnly = true;
+            // 
+            // ProductDateCreated
+            // 
+            this.ProductDateCreated.HeaderText = "Появилась";
+            this.ProductDateCreated.Name = "ProductDateCreated";
+            this.ProductDateCreated.ReadOnly = true;
+            // 
+            // LastPrice
+            // 
+            this.LastPrice.HeaderText = "Последняя цена";
+            this.LastPrice.Name = "LastPrice";
+            this.LastPrice.ReadOnly = true;
+            // 
+            // IsExist
+            // 
+            this.IsExist.HeaderText = "Активно";
+            this.IsExist.Name = "IsExist";
+            this.IsExist.ReadOnly = true;
+            this.IsExist.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsExist.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -570,7 +554,7 @@
             this.Controls.Add(this.dataGrid);
             this.MinimumSize = new System.Drawing.Size(1200, 715);
             this.Name = "ProductsForm";
-            this.Text = "Игры";
+            this.Text = "Услуги";
             this.Load += new System.EventHandler(this.ProductsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.flpEditing.ResumeLayout(false);
@@ -588,17 +572,10 @@
 
         private MetroFramework.Controls.MetroGrid dataGrid;
         private System.Windows.Forms.FlowLayoutPanel flpEditing;
-        private MetroFramework.Controls.MetroButton btnRemove;
         private MetroFramework.Controls.MetroButton btnEdit;
         private MetroFramework.Controls.MetroButton btnAdd;
         private MetroFramework.Controls.MetroLabel lblCount;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RowId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TitleId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDateCreated;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastPrice;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsExist;
         private MetroFramework.Controls.MetroGrid dtgPrices;
         private System.Windows.Forms.PictureBox picGame;
         private MetroFramework.Controls.MetroLabel metroLabel2;
@@ -614,5 +591,11 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroTextBox txtDesc;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RowId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TitleId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDateCreated;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastPrice;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsExist;
     }
 }

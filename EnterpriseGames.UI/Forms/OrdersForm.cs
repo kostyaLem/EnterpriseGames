@@ -26,13 +26,16 @@ namespace EnterpriseGames.UI.Forms
             _user = Settings.CurrentUser;
         }
 
-        private void OrdersForm_Load(object sender, System.EventArgs e)
+        private void OrdersForm_Load(object sender, EventArgs e)
         {
             UpdateOrdersDtg();
             UpdateCounter();
+
+            if (Settings.CurrentUser.UserType == UserType.Employee)
+            {
+                orderButtons.Enabled = false;
+            }
         }
-
-
 
         private void UpdateOrdersDtg()
         {

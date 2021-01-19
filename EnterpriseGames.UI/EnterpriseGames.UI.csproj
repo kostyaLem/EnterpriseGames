@@ -99,6 +99,12 @@
     <Compile Include="Forms\EditForms\EditOrderForm.Designer.cs">
       <DependentUpon>EditOrderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditForms\ReportMakerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditForms\ReportMakerForm.Designer.cs">
+      <DependentUpon>ReportMakerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EmployeesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     <EmbeddedResource Include="Forms\EditForms\EditOrderForm.resx">
       <DependentUpon>EditOrderForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditForms\ReportMakerForm.resx">
+      <DependentUpon>ReportMakerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,7 +176,7 @@
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -194,6 +203,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\dogovor-usluga-reklama.pdf" />
     <None Include="Resources\go.png" />
   </ItemGroup>
   <ItemGroup>

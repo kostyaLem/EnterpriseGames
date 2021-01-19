@@ -1,9 +1,11 @@
 ﻿using EnterpriseGames.Core.Other;
 using EnterpriseGames.Core.Services;
 using EnterpriseGames.UI.Forms.EditForms;
+using EnterpriseGames.UI.Properties;
 using MetroFramework;
 using MetroFramework.Forms;
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,7 +18,6 @@ namespace EnterpriseGames.UI.Forms
 
         private readonly EmployeesService _empService = new EmployeesService(Settings.Context);
 
-        private readonly User _user;
         private Record[] _items;
 
         private System.Timers.Timer _timer;
@@ -27,8 +28,6 @@ namespace EnterpriseGames.UI.Forms
 
             Application.ApplicationExit += Application_ApplicationExit;
             this.FormClosing += MainForm_FormClosing;
-
-            _user = Settings.CurrentUser;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -61,7 +60,7 @@ namespace EnterpriseGames.UI.Forms
         private void UpdateOrdersDtg()
         {
             dtgOrders.Rows.Clear();
-            _items = _empService.GetOrders(_user.ID);
+            _items = _empService.GetOrders(Settings.CurrentUser.ID);
 
             if (_items != null)
             {
@@ -97,22 +96,25 @@ namespace EnterpriseGames.UI.Forms
             }
         }
 
-        private void MainForm_Load(object sender, System.EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             _timer = new System.Timers.Timer();
-            _timer.Elapsed += (s, _) => lblCurrentTime.Invoke(new Action(() => lblCurrentTime.Text = $"Текущее время: {DateTime.Now.ToLongTimeString()}"));
+            _timer.Elapsed += (s, _) => lblCurrentTime.Invoke(new Action(() =>
+            {
+                try
+                {
+                    lblCurrentTime.Text = $"Текущее время: {DateTime.Now.ToLongTimeString()}";
+                }
+                catch { }
+            }));
             _timer.Interval = 1_000;
             _timer.Start();
 
-            lblEmployee.Text = _user.UserType == UserType.Admin ? "Администратор: " : "Сотрудник: ";
-            lblEmployee.Text += string.Join(" ", _user.Surname, _user.Name, _user.Patronymic);
+            lblEmployee.Text = Settings.CurrentUser.UserType == UserType.Admin ? "Администратор: " : "Сотрудник: ";
+            lblEmployee.Text += string.Join(" ", Settings.CurrentUser.Surname, Settings.CurrentUser.Name, Settings.CurrentUser.Patronymic);
 
             if (Settings.CurrentUser.UserType == UserType.Employee)
-            {
-                btnEdit.Enabled = false;
-                btnShowEmployees.Enabled = false;
-                btnShowOrders.Enabled = false;
-            }
+                oderButtons.Enabled = false;
 
             UpdateOrdersDtg();
             UpdateCounter();
@@ -165,8 +167,10 @@ namespace EnterpriseGames.UI.Forms
             Application.Exit();
         }
 
+        private bool isChangingUser;
         private void btnChangeUser_Click(object sender, EventArgs e)
         {
+            isChangingUser = true;
             this.Close();
         }
 
@@ -189,9 +193,9 @@ namespace EnterpriseGames.UI.Forms
 
             if (result == DialogResult.OK)
             {
-                record.EmployeeID = _user.ID;
+                record.EmployeeID = Settings.CurrentUser.ID;
 
-                _empService.AddOrder(_user.ID, record);
+                _empService.AddOrder(Settings.CurrentUser.ID, record);
 
                 MetroMessageBox.Show(this, "Заказ успешно добавлен", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateOrdersDtg();
@@ -209,9 +213,9 @@ namespace EnterpriseGames.UI.Forms
 
                 if (result == DialogResult.OK)
                 {
-                    record.EmployeeID = _user.ID;
+                    record.EmployeeID = Settings.CurrentUser.ID;
 
-                    _empService.Update(_user.ID, record);
+                    _empService.Update(Settings.CurrentUser.ID, record);
 
                     MetroMessageBox.Show(this, "Заказ успешно изменен", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateOrdersDtg();
@@ -222,6 +226,30 @@ namespace EnterpriseGames.UI.Forms
         private void btnShowCustomers_Click(object sender, EventArgs e)
         {
             new CustomersForm().ShowDialog();
+        }
+
+        private void btnDownloadReport_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new SaveFileDialog();
+            fileDialog.DefaultExt = "pdf";
+            fileDialog.FileName = "Договор";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllBytes(fileDialog.FileName, Resources.dogovor_usluga_reklama);
+                MetroMessageBox.Show(this, $"Договор находится в папке:\n{fileDialog.FileName}", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnMakeReport_Click(object sender, EventArgs e)
+        {
+            new ReportMakerForm().ShowDialog();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!isChangingUser)
+                Environment.Exit(0);
         }
     }
 }

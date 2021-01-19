@@ -186,7 +186,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
 
             if (string.IsNullOrEmpty(_record.DateCreated))
                 _record.DateCreated = dtpCreated.Value.ToShortDateString();
-            if (_record.State == RecordState.Closed)
+            if (cbStatus.SelectedIndex == 1)
                 _record.DateClosed = DateTime.Now.ToShortDateString();
 
             if (cbClients.SelectedIndex != -1)

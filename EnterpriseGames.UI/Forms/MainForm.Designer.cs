@@ -72,11 +72,13 @@
             this.lblCurrentTime = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.oderButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.btnEdit = new MetroFramework.Controls.MetroButton();
             this.lblCount = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.btnMakeReport = new MetroFramework.Controls.MetroButton();
+            this.btnDownloadReport = new MetroFramework.Controls.MetroButton();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -85,7 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgOrders)).BeginInit();
             this.tlpItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgItems)).BeginInit();
-            this.flowLayoutPanel4.SuspendLayout();
+            this.oderButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblEmployee
@@ -184,7 +186,7 @@
             this.btnShowCustomers.Name = "btnShowCustomers";
             this.btnShowCustomers.Size = new System.Drawing.Size(119, 40);
             this.btnShowCustomers.TabIndex = 12;
-            this.btnShowCustomers.Text = "Покупатели";
+            this.btnShowCustomers.Text = "Клиенты";
             this.btnShowCustomers.UseSelectable = true;
             this.btnShowCustomers.Click += new System.EventHandler(this.btnShowCustomers_Click);
             // 
@@ -564,20 +566,20 @@
             this.metroToggle1.UseSelectable = true;
             this.metroToggle1.CheckedChanged += new System.EventHandler(this.metroToggle1_CheckedChanged);
             // 
-            // flowLayoutPanel4
+            // oderButtons
             // 
-            this.flowLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel4.AutoSize = true;
-            this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel4.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel4.Controls.Add(this.btnEdit);
-            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(966, 569);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(252, 48);
-            this.flowLayoutPanel4.TabIndex = 8;
+            this.oderButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.oderButtons.AutoSize = true;
+            this.oderButtons.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.oderButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.oderButtons.Controls.Add(this.btnAdd);
+            this.oderButtons.Controls.Add(this.btnEdit);
+            this.oderButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.oderButtons.Location = new System.Drawing.Point(966, 569);
+            this.oderButtons.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.oderButtons.Name = "oderButtons";
+            this.oderButtons.Size = new System.Drawing.Size(252, 48);
+            this.oderButtons.TabIndex = 8;
             // 
             // btnAdd
             // 
@@ -605,7 +607,7 @@
             // 
             // lblCount
             // 
-            this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCount.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCount.AutoSize = true;
             this.lblCount.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.lblCount.Location = new System.Drawing.Point(463, 94);
@@ -616,7 +618,7 @@
             // 
             // metroLabel4
             // 
-            this.metroLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.metroLabel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel4.Location = new System.Drawing.Point(359, 94);
@@ -625,14 +627,40 @@
             this.metroLabel4.TabIndex = 9;
             this.metroLabel4.Text = "Количество: ";
             // 
+            // btnMakeReport
+            // 
+            this.btnMakeReport.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnMakeReport.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnMakeReport.Location = new System.Drawing.Point(558, 19);
+            this.btnMakeReport.Name = "btnMakeReport";
+            this.btnMakeReport.Size = new System.Drawing.Size(184, 40);
+            this.btnMakeReport.TabIndex = 10;
+            this.btnMakeReport.Text = "Сформировать отчёт";
+            this.btnMakeReport.UseSelectable = true;
+            this.btnMakeReport.Click += new System.EventHandler(this.btnMakeReport_Click);
+            // 
+            // btnDownloadReport
+            // 
+            this.btnDownloadReport.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnDownloadReport.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnDownloadReport.Location = new System.Drawing.Point(368, 19);
+            this.btnDownloadReport.Name = "btnDownloadReport";
+            this.btnDownloadReport.Size = new System.Drawing.Size(184, 40);
+            this.btnDownloadReport.TabIndex = 11;
+            this.btnDownloadReport.Text = "Скачать договор";
+            this.btnDownloadReport.UseSelectable = true;
+            this.btnDownloadReport.Click += new System.EventHandler(this.btnDownloadReport_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 637);
+            this.Controls.Add(this.btnDownloadReport);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.metroLabel4);
-            this.Controls.Add(this.flowLayoutPanel4);
+            this.Controls.Add(this.btnMakeReport);
+            this.Controls.Add(this.oderButtons);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroToggle1);
             this.Controls.Add(this.lblCurrentTime);
@@ -645,6 +673,7 @@
             this.MinimumSize = new System.Drawing.Size(1241, 592);
             this.Name = "MainForm";
             this.Text = "EnterpriseGames | Главное окно";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -657,7 +686,7 @@
             this.tlpItems.ResumeLayout(false);
             this.tlpItems.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgItems)).EndInit();
-            this.flowLayoutPanel4.ResumeLayout(false);
+            this.oderButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -688,7 +717,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpItems;
         private MetroFramework.Controls.MetroLabel lblPositions;
         private MetroFramework.Controls.MetroGrid dtgItems;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel oderButtons;
         private MetroFramework.Controls.MetroButton btnAdd;
         private MetroFramework.Controls.MetroButton btnEdit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -705,5 +734,7 @@
         private MetroFramework.Controls.MetroButton btnShowCustomers;
         private MetroFramework.Controls.MetroLabel lblCount;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroButton btnMakeReport;
+        private MetroFramework.Controls.MetroButton btnDownloadReport;
     }
 }

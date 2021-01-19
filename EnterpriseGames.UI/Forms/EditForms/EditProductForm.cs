@@ -33,7 +33,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
             lstExistedGenres.Items.AddRange(_genres.Select(x => x.MapToItem()).ToArray());
             lstGameGenres.Items.AddRange(_product.ProductGenre.Select(x => x.Genre.MapToItem()).ToArray());
 
-            _product.ProductPriceHistory.ToList().ForEach(x => dtgPrices.Rows.Add(x.Id, x.Price, x.DateCreated, !Convert.ToBoolean(x.IsDeleted)));
+            _product.ProductPriceHistory.ToList().ForEach(x => dtgPrices.Rows.Add(x.Id, x.Price + " р.", x.DateCreated, !Convert.ToBoolean(x.IsDeleted)));
 
             if (_product.Image != null)
                 using (var ms = new MemoryStream(_product.Image))
@@ -60,7 +60,7 @@ namespace EnterpriseGames.UI.Forms.EditForms
             }
 
             var str = txtNewPrice.Text.Trim().Replace('.', ',');
-            if (double.TryParse(str, out double value))
+            if (double.TryParse(str, out double value) || value < 1)
             {
                 dtgPrices.Rows.Add("", value.ToString("N2") + " р.", DateTime.Now.ToShortDateString(), true);
                 txtNewPrice.Text = string.Empty;

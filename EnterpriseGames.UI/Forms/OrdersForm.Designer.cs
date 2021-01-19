@@ -50,14 +50,14 @@
             this.DateClosed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.orderButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.btnEdit = new MetroFramework.Controls.MetroButton();
             this.lblCount = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dtgItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgOrders)).BeginInit();
-            this.flowLayoutPanel4.SuspendLayout();
+            this.orderButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblPositions
@@ -273,20 +273,20 @@
             this.OrderState.ReadOnly = true;
             this.OrderState.Width = 160;
             // 
-            // flowLayoutPanel4
+            // orderButtons
             // 
-            this.flowLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel4.AutoSize = true;
-            this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel4.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel4.Controls.Add(this.btnEdit);
-            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(803, 498);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(252, 48);
-            this.flowLayoutPanel4.TabIndex = 18;
+            this.orderButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.orderButtons.AutoSize = true;
+            this.orderButtons.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.orderButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.orderButtons.Controls.Add(this.btnAdd);
+            this.orderButtons.Controls.Add(this.btnEdit);
+            this.orderButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.orderButtons.Location = new System.Drawing.Point(803, 498);
+            this.orderButtons.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.orderButtons.Name = "orderButtons";
+            this.orderButtons.Size = new System.Drawing.Size(252, 48);
+            this.orderButtons.TabIndex = 18;
             // 
             // btnAdd
             // 
@@ -340,7 +340,7 @@
             this.ClientSize = new System.Drawing.Size(1083, 573);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.flowLayoutPanel4);
+            this.Controls.Add(this.orderButtons);
             this.Controls.Add(this.lblPositions);
             this.Controls.Add(this.dtgItems);
             this.Controls.Add(this.dtgOrders);
@@ -350,7 +350,7 @@
             this.Load += new System.EventHandler(this.OrdersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgOrders)).EndInit();
-            this.flowLayoutPanel4.ResumeLayout(false);
+            this.orderButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,7 +372,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateClosed;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderState;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel orderButtons;
         private MetroFramework.Controls.MetroButton btnAdd;
         private MetroFramework.Controls.MetroButton btnEdit;
         private MetroFramework.Controls.MetroLabel lblCount;

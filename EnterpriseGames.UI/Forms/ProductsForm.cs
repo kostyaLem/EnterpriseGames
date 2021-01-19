@@ -66,22 +66,26 @@ namespace EnterpriseGames.UI.Forms
 
             if (dataGrid.SelectedRows.Count != 0)
             {
-                btnRemove.Enabled = btnEdit.Enabled = true;
+                if (Settings.CurrentUser.UserType == Core.Other.UserType.Admin )
+                {
+                    btnEdit.Enabled = true;
+                }
 
-                var selectedProduct = _prService.Find((Convert.ToInt32(dataGrid.SelectedRows[0].Cells[0].FormattedValue)));
+                    var selectedProduct = _prService.Find((Convert.ToInt32(dataGrid.SelectedRows[0].Cells[0].FormattedValue)));
 
                 txtDesc.Text = selectedProduct.Description;
 
                 if (selectedProduct.Image != null)
                     using (var ms = new MemoryStream(selectedProduct.Image))
                         picGame.Image = Image.FromStream(ms);
+                else
+                    picGame.Image = null;
 
                 selectedProduct.ProductPriceHistory.ToList().ForEach(x => dtgPrices.Rows.Add(x.Id, x.Price, x.DateCreated));
                 selectedProduct.ProductGenre.ToList().ForEach(x => dtgGenres.Rows.Add(x.GenreId, x.Genre.Name));
             }
             else
             {
-                btnRemove.Enabled = btnEdit.Enabled = false;
                 txtDesc.Text = string.Empty;
                 picGame.Image?.Dispose();
                 picGame.Image = null;
